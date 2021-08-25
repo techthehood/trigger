@@ -1,0 +1,19 @@
+  <div id="profile_panel_icon_box" class="profile_panel_icon_box" >
+    <a  id="pp_panelHomeBtn" class="pp_panelHomeBtn icon-home d3-ico d3-disc d3-disc-outer d3-disc d3-disc-outer-outer d3-disc-bg"
+      title="home" style="text-decoration: none;">
+    </a>
+    <div  id="pp_panelCtrl" class="pp_panelCtrl"
+    title="profile panel controls">
+    </div>
+    <!-- href="#pp_panel" -->
+  </div>
+
+<script>
+  // local restarts have to be done manually with 'rs'
+  document.addEventListener('DOMContentLoaded', async function () {
+    let home_btn = document.querySelector(".pp_panelHomeBtn");
+    home_btn.href = `${location.origin}/core/`;
+    home_btn.target = "_self";
+  });
+
+</script>

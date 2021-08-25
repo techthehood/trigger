@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample</title>
+  <link rel="icon" href="/req/img/sample.png">
+  <link rel="stylesheet" href="/req/css/style.css">
+</head>
+<!-- <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/babel.min.js"></script> -->
+<script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script>
+  Babel.registerPreset("my-preset", {
+    presets: [
+      [Babel.availablePresets["es2017"], { modules: false }],
+      [Babel.availablePresets["react"]]
+
+    ],
+    plugins: [
+      [Babel.availablePlugins["transform-modules-umd"]]
+    ]
+  });
+</script>
+
+<body>
+  <div class="main-content">
+    {{>header}}
+    <div class="root">
+    </div>
+    <h2>techthehood starter-pack</h2>
+    <!-- with no bundler (webpack) all imports have to first be downloaded with a script tag-->
+    <script type="text/babel" src="/req/sample/js/App.js" data-presets="my-preset"></script>
+    <script type="text/babel" src="/req/sample/js/index.js" data-presets="my-preset"></script>
+    {{>footer}}
+  </div>
+</body>
+
+</html>

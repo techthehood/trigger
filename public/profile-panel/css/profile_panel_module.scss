@@ -1,0 +1,214 @@
+  *{box-sizing:border-box;}
+
+  /***************************    Jquery Mobile css    ***************************/
+  /**********  responsive panel modifications  *************/
+  .pp_panel{background-color: transparent;position:fixed; display:flex; flex-flow: column nowrap;}
+  .pp_close_cont{height:50px; display: flex; justify-content: flex-end;}
+  .pp_content_cont{
+    // flex: 1;/*for now this stretches the content area too far down for sign out to position correctly*/
+    .guest-options{
+      margin: 0;
+      padding: 2.5em;
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      flex-flow: column nowrap;
+      width: 100%;
+
+    }
+  }
+  .pp_panel_cls_btn{margin:10px !important;}
+  .pp_panel.ui-panel, .pp_panel{width:5em !important;}/* fixes both when one side is open "side" Panel width*/
+  .pp_panel.ui-panel-wrapper.ui-panel-animate.ui-panel-page-content-position-right.ui-bar-a
+  {transform:translate3d(-5em,0,0);-moz-transform:translate3d(-5em,0,0);-webkit-transform:translate3d(-5em,0,0);}
+  /**/
+  .pp_panel.ui-panel-wrapper.ui-panel-animate.ui-panel-page-content-position-left.ui-bar-a
+  {transform:translate3d(5em,0,0);-moz-transform:translate3d(5em,0,0);-webkit-transform:translate3d(5em,0,0);}
+  /**/
+  /**/
+
+  /*Left reveal panel */
+  .pp_panel.ui-panel-page-content-position-left{left:5em;right:-5em;}
+  .pp_panel.ui-panel-page-content-position-right{left:-5em;right:5em;}/*needed?*/
+
+
+  .pp_panel.ui-panel-animate.ui-panel-page-content-position-left
+  {transform:translate3d(5em,0,0);-moz-transform:translate3d(5em,0,0);-webkit-transform:translate3d(5em,0,0);}
+
+  .pp_panel.ui-panel-animate.ui-panel-page-content-position-right
+  {transform:translate3d(-5em,0,0);-moz-transform:translate3d(-5em,0,0);-webkit-transform:translate3d(-5em,0,0);}
+  /* */
+
+  .pp_sign_out{
+    border: 1px solid #fff;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-clip: padding-box;    border: 1px solid #fff;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    margin: 1rem;
+    border-radius: .25rem;
+    margin: 1rem;
+    cursor: pointer;
+    text-align: center;
+  }/*pp_sign_out*/
+
+
+  /**********************   Custom Bugfix for gap at wide screen   *********************************/
+  @media(min-width: 55em){
+  .pp_panel.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left
+  {margin-right:5em !important;}
+  .pp_panel.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right
+  {margin-left:5em !important;}
+  }
+  /**********************   End Custom Bugfix for gap at wide screen   ****************************/
+
+  @media only screen and (min-width:320px) and (max-width:479px){
+
+  }
+
+  @media only screen and (min-width:480px) and (max-width:767px){
+
+  }
+
+  @media only screen and (min-width:768px) and (max-width:991px)
+  {
+
+  }
+
+  @media only screen and (min-width:992px) and (max-width:1999px)
+  {
+
+  }
+
+
+  .word_wrap{
+  /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    }
+
+    .ui-icon-bookmark:after, .d3-icon-bookmark:after{
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB3aWR0aD0iMjEwbW0iCiAgIGhlaWdodD0iMjk3bW0iCiAgIHZpZXdCb3g9IjAgMCAyMTAgMjk3IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc4IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIwLjkyLjEgcjE1MzcxIgogICBzb2RpcG9kaTpkb2NuYW1lPSJib29rbWFya19oZWFydC5zdmciPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMyIiAvPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0iYmFzZSIKICAgICBwYWdlY29sb3I9IiNjY2NiYWQiCiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiCiAgICAgYm9yZGVyb3BhY2l0eT0iMS4wIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwIgogICAgIGlua3NjYXBlOnBhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6em9vbT0iMC4zNSIKICAgICBpbmtzY2FwZTpjeD0iMjM0Ljg3Mzk2IgogICAgIGlua3NjYXBlOmN5PSI0ODIuNjg4NjYiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9Im1tIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxMjgwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9Ijc0NCIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iODIiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9Ii00IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6c25hcC1ncmlkcz0idHJ1ZSIgLz4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGE1Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZwogICAgIGlua3NjYXBlOmxhYmVsPSJMYXllciAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSI+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MS41ODU3NTU1OTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eTowLjc2ODE4MTYiCiAgICAgICBkPSJtIDEzLjAwMjM5OCwxNC4zNjUzNTggMTg0LjIxOTkxMiwtMi4yZS01IDAuMTQzOTEsMjY2LjA4NTIxNCAtODYuMTI0NCwtNzYuNjAwMTcgMC42ODU4MywtNjAuNTQ4NSBjIDAsMCA3MC40ODg5MiwtMzkuMTUyNzEgNTQuNDc2MjMsLTg3LjcxNDU0IC0yNi4zOTkzLC00MS41MDU4MDkgLTYwLjAzNzU2LDEuNTUxNTg5IC02MC4wMzc1NiwxLjU1MTU4OSAwLDAgLTMzLjA3NjgzNywtNDAuMTM5NzcyIC01Ny43NDUwMzIsLTUuMjc0ODkzIC0yNi4zOTkyOTUsNDguOTc2ODY0IDQ4LjAwNTQzMSw5MC43MDQxMTQgNDguMDA1NDMxLDkwLjcwNDExNCBsIC0wLjY4NTg2NCw2MC44NDE5OSAtODEuNDI2Niw3Ny4xNzg0MiB6IgogICAgICAgaWQ9InBhdGgzNjgyIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjY2NjY2NjY2NjIiAvPgogIDwvZz4KPC9zdmc+Cg==
+    );
+
+    /* Make your icon fit */
+    background-size: 18px 18px;
+    }
+
+    .ui-icon-bolt:after, .d3-icon-bolt:after{
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjEzMnB4IiBoZWlnaHQ9IjEzMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMzIgMTMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0xMTMuNjkgMTEuNzQzLTg2LjgyOSA0NC42OTUgMjkuMjk3IDIxLjQ5OC0zOC4xMjYgNDEuNTE1IDg2LjI3OC00My44OTUtMjUuODkxLTIwLjY3OCAzNS4yNzItNDMuMTM2IiBmaWxsPSIjZmZmIi8+PC9zdmc+DQo=
+    );
+    /* Make your icon fit */
+    background-size: 18px 18px;
+    }
+
+    .white_bg{
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEwbW0iIGhlaWdodD0iMjk3bW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIxMCAyOTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeT0iLS4yMDM3MSIgd2lkdGg9IjIxMS42OCIgaGVpZ2h0PSIzMDMuMDgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjcwOTA5Ii8+PC9zdmc+DQo=
+      );
+    }
+    .dark_bg{
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEwbW0iIGhlaWdodD0iMjk3bW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIxMCAyOTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeT0iLS4yMDM3MSIgd2lkdGg9IjIxMS42OCIgaGVpZ2h0PSIzMDMuMDgiIGZpbGwtb3BhY2l0eT0iLjcwOTA5Ii8+PC9zdmc+DQo=
+      );
+      backdrop-filter: blur(2px);
+    }
+
+    .clear,.clr{clear:both;}
+
+    .d3-ui:after{content: "";
+    height: 20px;
+    width: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    top: 10px;
+    left: 0px;
+    }
+
+
+    .d3-btn:focus{
+      outline:none;
+      box-shadow: 0 0 12px #38c;
+    }
+
+    .d3-btn{
+      background-color: #f6f6f6;
+      border-color: #ddd;
+      color: #333;
+      text-shadow: 0 1px 0 #f3f3f3;
+
+      z-index: 10;
+
+      display: inline-block;
+      vertical-align: middle;
+
+      border-radius: 1em;
+
+      width: 1.75em;
+      height: 1.75em;
+      text-indent: -9999px;
+      white-space: nowrap!important;
+
+      position: relative;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+
+      border-width: 1px;
+      border-style: solid;
+
+    }
+
+    .d3-btn:after{
+      top: 50%;
+      margin-top: -11px;
+
+      left: 50%;
+      margin-left: -11px;
+
+      content: "";
+      position: absolute;
+      display: block;
+      width: 22px;
+      height: 22px;
+
+      background-color: rgba(0,0,0,.3);
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-border-radius: 1em;
+      border-radius: 1em;
+    }
+  /********************************************************************************/
+
+  /***************** test rules **********************/
+  .test_yellow{border:1px solid yellow !important;}
+  .test_red{border:1px solid red !important;}
+  .test_blue{border:1px solid blue !important;}
+  .test_green{border:1px solid green !important;}
+  .test_purple{border:1px solid purple !important;}
+  .test_orange{border:1px solid orange !important;}
+  /***************** test rules **********************/

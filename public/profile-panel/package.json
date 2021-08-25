@@ -1,0 +1,73 @@
+{
+  "name": "profile-panel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development ./js/app.js --output ./js/dist/bundle.js",
+    "build": "webpack --mode production ./js/app.js --output ./js/dist/bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {},
+  "comments": {
+    "dynamic_dependencies": {
+      "@babel/runtime": "^7.2.0",
+      "react": "^16.9.0",
+      "react-dom": "^16.9.0",
+      "react-redux": "^7.1.0",
+      "react-router-dom": "^5.0.1",
+      "react-scripts": "3.1.1",
+      "redux": "^4.0.4",
+      "redux-form": "^8.2.6",
+      "redux-thunk": "^2.3.0"
+    },
+    "root_dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^5.6.12",
+      "passport": "^0.4.0",
+      "passport-jwt": "^4.0.0",
+      "axios": "^0.19.0",
+      "request": "^2.88.0",
+      "cheerio": "^1.0.0-rc.3",
+      "cors": "^2.8.5",
+      "chalk": "^2.4.2"
+    },
+    "moved-to-root":{
+      "devDependencies": {
+        "@babel/core": "^7.2.0",
+        "@babel/plugin-proposal-class-properties": "^7.2.1",
+        "@babel/plugin-proposal-decorators": "^7.7.4",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/plugin-transform-runtime": "^7.2.0",
+        "@babel/preset-env": "^7.2.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^8.0.4",
+        "css-loader": "^2.0.1",
+        "dynamic-cdn-webpack-plugin": "^4.0.0",
+        "exports-loader": "^0.7.0",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "module-to-cdn": "^3.1.5",
+        "sass": "^1.32.6",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.16.4",
+        "webpack-bundle-analyzer": "^3.3.2",
+        "webpack-cli": "^3.1.0",
+        "worker-loader": "^2.0.0"
+      },
+      "dependencies": {
+        "@babel/runtime": "^7.2.0",
+        "mobx": "^5.15.0",
+        "mobx-react": "^6.1.4",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-router-dom": "^5.0.1",
+      },
+    },
+  }
+}
