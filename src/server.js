@@ -17,6 +17,7 @@ const Keys = require('../configuration/keys').mongodb;
 const { HOSTNAME, DOMAIN_NAME } = require('../configuration/keys');
 const corsOptions = require('./utils/cors-options.js');
 const process_memory = require('./utils/process_memory.js');
+const display_console = false;
 
 let dbConnect = (os.hostname().includes(HOSTNAME)) ? Keys.liveDB : Keys.db;// what is this in production?
 mongoose.connect(dbConnect, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -33,6 +34,7 @@ const pagesRouter = require("./routers/pages");
 // const sampleRouter = require("../public/sample/routers/sample");
 const oauthClientRouter = require('../public/oauth_client/routers/trigger');
 const oauthServerRouter = require('./oauth_server/routers/oauth');
+const triggerAPIRouter = require('../public/oauth_client/routers/api');
 
 // console.log('forecast = ',forecast);
 
@@ -64,6 +66,14 @@ const oauthClientPartialsPath = path.join(__dirname, "../public/oauth_client/vie
 hbs.registerPartials(partialsPath);
 hbs.registerPartials(oauthClientPartialsPath);
 
+hbs.registerHelper('vendor', function(name, use_local_files, force_local) {
+  if(display_console || false) console.log(chalk.red(`[vendor] use_local_files name = `),name, typeof name);
+  if(display_console || false) console.log(chalk.red(`[vendor] use_local_files`),use_local_files, typeof use_local_files);
+  // if(display_console || false) console.log(chalk.red(`[vendor] force_local`),force_local, typeof force_local);
+  let force_local_file = (typeof force_local == "boolean" && force_local == true) ? true : false;
+    return (typeof use_local_files == "string" && use_local_files == "true" || force_local_file ) ? `${name}_local` : name;
+});
+
 
 // path to public directory - where to find external files
 //setup static directory to serve - server default/root
@@ -71,6 +81,8 @@ hbs.registerPartials(oauthClientPartialsPath);
 const publicDirectoryPath = path.join(__dirname,"../public");
 app.use('/req',express.static(publicDirectoryPath));
 app.use('/', express.static(publicDirectoryPath));// client side auth OAUTH DOCS:
+app.use('/:val1?', express.static(publicDirectoryPath));// NOTE: this is enough for one level after the main path
+// app.use('/:val1?/:val2?', express.static(publicDirectoryPath));// this is too many levels out
 
 
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -84,8 +96,9 @@ app.use(express.json());
 // setup all routers
 app.use(pagesRouter);
 // app.use(sampleRouter);
-app.use('/', oauthClientRouter);// client side auth OAUTH DOCS:
 app.use('/api/auth', oauthServerRouter);// server side auth OAUTH DOCS:
+app.use('/api/trigger', triggerAPIRouter);// server side auth OAUTH DOCS:
+app.use('/', oauthClientRouter);// client side auth OAUTH DOCS: NOTE: order is important here - this intercepts every route
 
 // app.options('/req/post', cors(corsOptions),function(req,res){
 //   res.setHeader("Access-Control-Allow-Origin",`https://${req.host}`);
@@ -106,7 +119,7 @@ app.get('*', cors(corsOptions), (req, res) => {
     title:'404',
     errorMessage:'page not found'
   });
-})
+});
 
 // app.get('/help', (req, res) => {
 //   res.send('Help page')

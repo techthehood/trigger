@@ -1,0 +1,59 @@
+/**
+ *
+*/
+$mp: !important;
+@import '../../../css/queries';
+
+  .toaster_home{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    margin: 0 auto;
+    padding: .5rem;
+    .d3-toast, .d3_toast{
+      display: flex;
+      justify-content: space-around;
+      background-color: cornsilk;
+      padding: .5rem;
+      &.danger{background-color: salmon; color: white;}
+      &.hide{display: none $mp;}
+      .toast_close{ right: -10px; top: -10px !important;}
+      p{
+        margin: unset; word-break: break-word;/*helps in p tag word wrapping*/
+        flex: 0 1 80% !important;
+      }// p
+      a{color: var(--active-blue) $mp; cursor: pointer;}
+      margin: 0 auto;
+      @include mobile{
+        max-width: 30rem;
+      }// mobile
+      @include smartphone{
+        max-width: 30rem;
+      }
+    }// d3_toast
+  }
+  .contact_info_creator {position: relative;}
+
+  // idk what the significance of message_display_span is
+  .message_display_span{
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    .toast_cont{
+      display: grid;
+      grid-template-areas: "img txt .";
+      background: #eee;
+      grid-template-columns: 1fr 7fr 1fr;
+      padding: 0px 10px;
+      border-radius: 0 0 7px 7px;
+      border-top: 1px solid #ccc !important;
+      cursor:pointer;
+      /*border: thin solid #ccc;
+      border-top:unset !important;*/
+      img{grid-area:img; width: 2rem;}
+      p{margin:0; grid-area:txt; text-align: center; padding: 5px 10px;}
+
+    }/*toast_cont*/
+  }/*message_display_span*/
+
+// .ul_display_list{padding-bottom: 40px;}

@@ -12,7 +12,7 @@ const Keys = require('../../configuration/keys').oauth;
 // const User = require('./models/user');
 const User = require('../../models/user');// centralized models
 
-const display_console = false;
+const display_console = true;
 
 // if(display_console || false) console.log("[jwt_secret]",JWT_SECRET);
 /**
@@ -47,6 +47,7 @@ passport.use( new JwtStrategy({
       // find the user specified in token
       if(display_console || false) console.log(chalk.yellow(`[JwtStrategy] testing payload`),payload);
       if(display_console || false) console.log(chalk.yellow(`[JwtStrategy] payload sub`),payload.sub);// there is no payload sub
+      let namespace = `https://${DOMAIN_NAME}/`;
 
       const user = await User.findById(payload.sub).lean();
 
@@ -55,12 +56,64 @@ passport.use( new JwtStrategy({
         return done(null,false);
       }
 
+      let sponsor_claim = `${namespace}sponsor_id`;
+      let client_claim = `${namespace}client_id`;
+      let register_claim = `${namespace}register`;
+      let test_claim = `${namespace}test`;
+
+      if (payload[`${client_claim}`]) {
+        let client_id = payload[`${client_claim}`];
+        let sponsor_id = payload[`${sponsor_claim}`];
+        let test = payload[`${test_claim}`] ? payload[`${test_claim}`] : false;
+
+        // if this token hasn't been registered with the sponsor this section will fail - i need an indicator 
+        // on the token that tells me its a registration token, then use this section to register the 
+        // user by the new client id
+
+        // if(some claim) register the client on the sponsor otherwise do the sponsor check for client data
+
+        // IDEA: FOR MORE SECURE TOKENS
+        // i can also send a message to the sponsor that they registered someone - and to confirm it
+        // i can also put a pin in the client obj so the person registering will need it b4 they can use it?
+        // i also can track failed attempts and disable the token after x amount of attempts
+        if (payload[`${register_claim}`]){
+          // return done("token is invalid", false);// test error
+          if(!test){
+            // save the new client data to the sponsor
+          }
+        }else{
+
+          // all guest tokens will have a client_claim
+          // check sponsor for client_id in client array, if no client_id - verifier = undefined;// invalidates token
+          let sponsor = await User.findOne({ _id: sponsor_id });
+          let is_client = sponsor.clients.includes(client_id);
+
+          if (!is_client && false) {
+            // if (!is_client && false) { // hack for skipping sponsor check
+            // throw 'token is invalid';// return empty handed - invalidates token
+            return done("token is invalid", false);
+          }else{
+            user.client_id = payload[`${client_claim}`];
+          }// else
+        }// else
+
+      }// if
+
       // check for the existence of a project_id
-      let namespace = `https://${DOMAIN_NAME}/`;
-      let project_claim = `${namespace}project_id`;
-      if(payload[`${project_claim}`]){
-        if(display_console || false) console.log(chalk.yellow(`[JwtStrategy] project_claim detected`),payload);
-        user.project_id = payload[`${project_claim}`];
+      // let sponsor_claim = `${namespace}sponsor_id`;
+      if(payload[`${sponsor_claim}`]){
+        if(display_console || false) console.log(chalk.yellow(`[JwtStrategy] sponsor_claim detected`),payload);
+        user.sponsor_id = payload[`${sponsor_claim}`];
+      }
+
+      if (payload[`${client_claim}`]) {
+        if (display_console || false) console.log(chalk.yellow(`[JwtStrategy] client_claim detected`), payload[`${client_claim}`]);
+        user.client_id = payload[`${client_claim}`];
+      }
+
+      if (payload[`${test_claim}`]) {
+        if (display_console || false) console.log(chalk.yellow(`[JwtStrategy] test_claim detected`), payload[`${test_claim}`]);
+        user.test = payload[`${test_claim}`];
       }
 
       //  otherwise, return the user

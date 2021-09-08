@@ -1,0 +1,17 @@
+
+
+.trigr_users{ grid-area: users;}
+.trigr_qrcode{ grid-area: code;}
+.trigr_menu{ grid-area: options;}
+
+.pp_content_cont.trigger{
+  height: 75%;
+  &.trigr_users { height: 85%;}
+}// pp_content_cont
+.pp_sign_out.trigger{
+  background-color: black;
+}
+
+.pp_btn{
+  &.left{justify-self: flex-end;}
+}

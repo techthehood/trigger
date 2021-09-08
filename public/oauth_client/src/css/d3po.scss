@@ -1,0 +1,209 @@
+$mp:!important;
+
+.d3-ico, .d3-ico-full{
+  padding: .15em;
+  cursor:pointer;
+  text-indent: unset $mp;
+  text-shadow: none;
+}
+.d3-ico/*, div.d3-ico, button.d3-ico*/{
+  width: fit-content $mp;
+  -webkit-appearance: unset;
+  border-style: unset;
+}
+
+.d3-ico:before{
+}
+
+.d3-disc, .d3-disc-bg{
+}
+
+.d3-bg{
+  /*i needed without a transparent bg*/
+  background-color: #f6f6f6;
+}
+.d3-disc-outer{
+  border-radius: 50px $mp;
+}
+.d3-outer, .d3-disc-outer{
+  border: 1px solid #ccc $mp;
+  height:unset $mp;
+}
+.d3-outer:before{
+  margin: .15em;
+}
+
+.d3-disc:before, .d3-disc-bg:before{
+  color:white;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  line-height: 22px;
+  padding: 4px;
+  margin:auto;
+}
+
+.d3-bloc{
+  /*font-size: 25px;*/
+  text-shadow: none;
+}
+.d3-bloc:before{
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+}
+
+.d3-ico-btn{
+  background-color: #f6f6f6 $mp;
+  border-color: #ddd;
+  color: #333;
+  text-shadow: none;
+  // z-index: 10;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 1em;
+  // width: 1.75em;
+  // height: 1.75em;
+  /*this text indent moves the icon waaayyyy off the page - never use*/
+  /*text-indent: -9999px;*/
+  white-space: nowrap!important;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  border-width: 1px;
+  border-style: solid;
+}
+.d3-ico-btn:hover, .d3-disc-bg:hover{
+  background-color: #ededed;
+  border-color: #ddd;
+  color: #333;
+}
+
+.d3-disc-bg:before{
+  background-color: rgba(0,0,0,.3);
+  color: white;
+  display: block;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 22px;
+  padding: unset $mp;
+}
+
+.d3-card{
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  border:1px solid #ddd;
+}
+
+.d3-dot{ margin: 5px;}
+.d3-dot:hover{background:transparent;}
+.d3-hov-blue:hover:before{ color: blue;}
+.d3-hov-sky:hover:before{ color: deepskyblue;}
+.d3-hov-gold:hover:before{ color: #ff6; }
+
+.d3-abs{ position: absolute; }
+
+.media_btn.icon-doing{ font-size: 21px;}
+
+.d3-btn:focus{
+  outline:none;
+  box-shadow: 0 0 12px #38c;
+}
+
+.d3-button{
+  background-color: #f6f6f6;
+  border-color: #ddd;
+  color: #333;
+  text-shadow: 0 1px 0 #f3f3f3;
+  z-index: 10;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 1em;
+  white-space: nowrap !important;
+  position: relative;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.d3-btn{
+  background-color: #f6f6f6;
+  border-color: #ddd;
+  color: #333;
+  text-shadow: 0 1px 0 #f3f3f3;
+
+  z-index: 10;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  border-radius: 1em;
+
+  width: 1.75em;
+  height: 1.75em;
+  text-indent: -9999px;
+  white-space: nowrap!important;
+
+  position: relative;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  border-width: 1px;
+  border-style: solid;
+
+}
+
+.d3-btn:after{
+  top: 50%;
+  margin-top: -11px;
+
+  left: 50%;
+  margin-left: -11px;
+
+  content: "";
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+
+  background-color: rgba(0,0,0,.3);
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+}
+
+.d3-borderline{
+  border-top: transparent !important;
+  border-right: transparent !important;
+  border-left: transparent !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid #ccc !important;
+}//borderline
+
+.soft_filter, .soft-filter{
+  margin: 5px auto;
+  display: block;
+  position: relative;
+  margin: .5em 0;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #fff;
+  border-color: #ddd;
+  color: #333;
+  text-shadow: 0 1px 0 #f3f3f3;
+  box-shadow: inset 0 1px 3px rgba(0, 0 ,0 ,.2);
+  border-radius: .3125em;
+  font-size: 1em;
+  line-height: 1.3;
+  font-family: sans-serif;
+}// soft_filter

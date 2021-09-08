@@ -1,0 +1,104 @@
+
+.loader_cont{
+  width: 100%;
+  .loader_modal
+  {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+    &.active{
+      display: flex;
+    }
+  }
+}
+
+$top_color:#1717a0;
+$rt_color:#9090f7fa;
+$bot_color:#d6d6fbfa;
+$lft_color:#f3f3f3;
+
+$item_border_size: 10px;
+$item_area: 80px;
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #1717a0;
+  border-right: 16px solid #9090f7fa;
+  border-bottom: 16px solid #d6d6fbfa;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+.item.loader {
+    border: $item_border_size solid $lft_color;
+    border-top: $item_border_size solid $top_color;
+    border-right: $item_border_size solid $rt_color;
+    border-bottom: $item_border_size solid $bot_color;
+    width: $item_area;
+    height: $item_area;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+// <div className="bounce-loader">
+//   <div className="bounce1"></div>
+//   <div className="bounce2"></div>
+//   <div className="bounce3"></div>
+// </div>
+
+.bounce-loader {
+  // margin: 100px auto 0;
+  margin: unset;
+  width: 70px;
+  text-align: center;
+}
+
+.bounce-loader > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.bounce-loader .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.bounce-loader .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

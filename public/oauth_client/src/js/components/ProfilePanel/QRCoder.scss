@@ -1,0 +1,80 @@
+$mp: !important;
+
+%active2{border: 2px solid var(--active-blue) $mp;}
+
+.qrc_view_modal_cont {
+    z-index: 10;
+    padding-top: 1rem $mp;
+    .qrc_view_content {
+      height: 32rem;
+      .qr_sponsor, .qr_counselor, .qr_copy, .qr_share{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        width: unset;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+      }//
+      .qr_sponsor{grid-area: sponsor; height: 3rem;}
+      .qr_counselor{grid-area: counselor; height: 3rem;}
+      .qr_code_wrapper{
+        height: 100%;
+        display: grid;
+        grid-template-areas:"title""canvas""hr""ctrls""url";
+        grid-template-rows: 1fr 3fr .25fr auto 2fr;
+        canvas, .qr_load { 
+          justify-self: center;
+          align-self: center;
+          grid-area: canvas;
+        }// canvas
+        hr{grid-area: hr;}
+        .qr_code_ctrls{
+          grid-area: ctrls; display: flex; justify-content: space-around;
+          .qr_btn{
+            &.active{@extend %active2;}
+          }
+        }
+      }//qr_code_wrapper
+      .qr_text_url_cont{
+        grid-area: url; 
+        padding: 1rem;
+        display: grid;
+        grid-template-areas:"text text""copy share";
+        grid-template-columns: 5fr auto;
+        gap: .5rem;
+        .qr_text_url{
+          grid-area: text; 
+          height: 2.5rem;
+          border: 1px solid #ccc;
+          padding: 5px .5rem;
+          background: var(--disabled-grey) $mp;
+          color: white;
+        }// qr_text_url
+        .qr_copy{grid-area: copy;}
+      }// qr_text_url_cont
+      .qr_title_cont{
+        p{
+          margin: unset;
+          padding: 0 1rem 1rem;
+          color: #ccc;
+          line-height: 1.3;
+        }// p
+        label{
+          text-shadow: 2px 2px 2px #ccc;
+          font-size: 1.3rem;
+              padding: .5rem 1rem 0;
+        }// label
+      }
+    }// qrc_view_content 
+    .closeBtn{
+      height: 2.5rem $mp;
+      width: 2.5rem $mp;
+      top: -1.5rem $mp;
+      right: -1.5rem $mp;
+      &:after{
+        height: 2rem $mp;
+        width: 2rem $mp;
+      }// :after
+    }// closeBtn
+  }// qrc_view_modal_cont

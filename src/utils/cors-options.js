@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const chalk = require('chalk');
 const { DOMAIN_NAME } = require('../../configuration/keys');
-const display_console = false;
+const display_console = true;
 
 dotenv.config();
 // var whitelist = ['http://example1.com', 'http://example2.com'];

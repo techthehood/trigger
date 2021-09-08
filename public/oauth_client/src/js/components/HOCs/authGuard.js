@@ -1,17 +1,22 @@
 import React, { Component, useEffect } from 'react';
 // import { connect } from 'react-redux';
-import { HOME_PATH } from '../../paths/';
+import { HOME_PATH, CHAT_PATH } from '../../paths/';
 import { observer, inject } from "mobx-react";
+import { useParams, useHistory, useLocation } from 'react-router-dom';
+//https://www.freecodecamp.org/news/a-complete-beginners-guide-to-react-router-include-router-hooks/
+import { PassportContext } from '../../passportContext';
 
-const AuthGuard = inject('passportStore')(observer((props) => {
+const AuthGuard = observer((props) => {
 
-  const {passportStore} = props;
+  const passportStore = props.store;
+  const history = useHistory();
+  // const passportStore = useContext(PassportContext);
 
   const checkAuth = () => {
     console.log("[authGuard] checking auth");
     if(!passportStore.state.isAuthenticated || !passportStore.state.token){
       console.log('User isn\'t authenticated. decline access');
-      props.history.push(HOME_PATH);
+      history.push(HOME_PATH);
     }
   }// checkAuth
 
@@ -21,6 +26,6 @@ const AuthGuard = inject('passportStore')(observer((props) => {
 
   return props.children;
 
-}))//AuthGuard
+});//AuthGuard
 
 export default AuthGuard;

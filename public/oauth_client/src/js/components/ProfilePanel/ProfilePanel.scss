@@ -1,0 +1,215 @@
+  *{box-sizing:border-box;}
+
+  /***************************    Jquery Mobile css    ***************************/
+  /**********  responsive panel modifications  *************/
+  .pp_panel{background-color: transparent;position:fixed; display:flex; flex-flow: column nowrap;}
+  .pp_close_cont{height:50px; display: flex; justify-content: flex-end;
+    &.left{justify-content: flex-start;}
+  }// pp_close_cont
+  .pp_content_cont{
+    // flex: 1;/*for now this stretches the content area too far down for sign out to position correctly*/
+    .guest-options{
+      margin: 0;
+      padding: 2.5em;
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      flex-flow: column nowrap;
+      width: 100%;
+
+    }
+  }
+
+  .pp_panel_cls_btn{}
+  .pp_panel.ui-panel, .pp_panel{width:5em !important;}/* fixes both when one side is open "side" Panel width*/
+  .pp_panel.ui-panel-wrapper.ui-panel-animate.ui-panel-page-content-position-right.ui-bar-a
+  {transform:translate3d(-5em,0,0);-moz-transform:translate3d(-5em,0,0);-webkit-transform:translate3d(-5em,0,0);}
+  /**/
+  .pp_panel.ui-panel-wrapper.ui-panel-animate.ui-panel-page-content-position-left.ui-bar-a
+  {transform:translate3d(5em,0,0);-moz-transform:translate3d(5em,0,0);-webkit-transform:translate3d(5em,0,0);}
+  /**/
+  /**/
+
+  /*Left reveal panel */
+  .pp_panel.ui-panel-page-content-position-left{left:5em;right:-5em;}
+  .pp_panel.ui-panel-page-content-position-right{left:-5em;right:5em;}/*needed?*/
+
+
+  .pp_panel.ui-panel-animate.ui-panel-page-content-position-left
+  {transform:translate3d(5em,0,0);-moz-transform:translate3d(5em,0,0);-webkit-transform:translate3d(5em,0,0);}
+
+  .pp_panel.ui-panel-animate.ui-panel-page-content-position-right
+  {transform:translate3d(-5em,0,0);-moz-transform:translate3d(-5em,0,0);-webkit-transform:translate3d(-5em,0,0);}
+  /* */
+
+  .pp_sign_out{
+    border: 1px solid #fff;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-clip: padding-box;    border: 1px solid #fff;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    margin: 1rem;
+    border-radius: .25rem;
+    margin: 1rem;
+    cursor: pointer;
+    text-align: center;
+  }/*pp_sign_out*/
+
+
+  /**********************   Custom Bugfix for gap at wide screen   *********************************/
+  @media(min-width: 55em){
+  .pp_panel.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left
+  {margin-right:5em !important;}
+  .pp_panel.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right
+  {margin-left:5em !important;}
+  }
+  /**********************   End Custom Bugfix for gap at wide screen   ****************************/
+
+  @media only screen and (min-width:320px) and (max-width:479px){
+
+  }
+
+  @media only screen and (min-width:480px) and (max-width:767px){
+
+  }
+
+  @media only screen and (min-width:768px) and (max-width:991px)
+  {
+
+  }
+
+  @media only screen and (min-width:992px) and (max-width:1999px)
+  {
+
+  }
+
+
+  .word_wrap{
+  /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    }
+
+    .pp_btn{cursor: pointer; width: 3rem; position: unset;}
+    .pp_btn:after{
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      /* background-color: rgba(0,0,0,.3); */
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-border-radius: 1em;
+      background-size: 2rem;
+    }// pp_btn
+
+    .white_bg{
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEwbW0iIGhlaWdodD0iMjk3bW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIxMCAyOTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeT0iLS4yMDM3MSIgd2lkdGg9IjIxMS42OCIgaGVpZ2h0PSIzMDMuMDgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjcwOTA5Ii8+PC9zdmc+DQo=
+      );
+    }
+    .dark_bg{
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEwbW0iIGhlaWdodD0iMjk3bW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIxMCAyOTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeT0iLS4yMDM3MSIgd2lkdGg9IjIxMS42OCIgaGVpZ2h0PSIzMDMuMDgiIGZpbGwtb3BhY2l0eT0iLjcwOTA5Ii8+PC9zdmc+DQo=
+      );
+      backdrop-filter: blur(2px);
+    }
+
+    .clear,.clr{clear:both;}
+
+    .d3-ui:after{content: "";
+    height: 20px;
+    width: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    top: 10px;
+    left: 0px;
+    }
+
+
+    .d3-btn:focus{
+      outline:none;
+      box-shadow: 0 0 12px #38c;
+    }
+
+    .d3-btn{
+      background-color: #f6f6f6;
+      border-color: #ddd;
+      color: #333;
+      text-shadow: 0 1px 0 #f3f3f3;
+
+      z-index: 10;
+
+      display: inline-block;
+      vertical-align: middle;
+
+      border-radius: 1em;
+
+      width: 1.75em;
+      height: 1.75em;
+      text-indent: -9999px;
+      white-space: nowrap!important;
+
+      position: relative;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+
+      border-width: 1px;
+      border-style: solid;
+
+    }
+
+    .d3-btn:after{
+      top: 50%;
+      margin-top: -11px;
+
+      left: 50%;
+      margin-left: -11px;
+
+      content: "";
+      position: absolute;
+      display: block;
+      width: 22px;
+      height: 22px;
+
+      background-color: rgba(0,0,0,.3);
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-border-radius: 1em;
+      border-radius: 1em;
+    }
+  /********************************************************************************/
+
+  /***************** test rules **********************/
+  .test_yellow{border:1px solid yellow !important;}
+  .test_red{border:1px solid red !important;}
+  .test_blue{border:1px solid blue !important;}
+  .test_green{border:1px solid green !important;}
+  .test_purple{border:1px solid purple !important;}
+  .test_orange{border:1px solid orange !important;}
+  /***************** test rules **********************/

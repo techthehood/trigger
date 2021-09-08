@@ -25,20 +25,6 @@ const passportFacebookToken = passport.authenticate('facebookToken', { session: 
   */
 
 /**
- * @callback OAServer-routers-oauth-signup
- * @type {path}
- * @requires passport
- * @requires OAServer-controllers-users
- * @example router.route('/signup').post(validateBody(schemas.authSchema),UsersController.signUp);
- * @see [OAClient-actions (linkback)]{@link module:OAClient-actions}
- * @see [passport (linkback)]{@link module:passport}
- * @requires OAServer-controllers-users
- */
-router.route('/signup')
-.post(validateBody(schemas.authSchema),UsersController.signUp);
-//sample path:  const res = await axios.post(`${location.origin}/api/auth/signup`, data);
-
-/**
  * @callback OAServer-routers-oauth-signin
  * @desc DOCS: this first formats the post data into body.value, 
  * it then authenticates using passport to validate the data, 
@@ -52,8 +38,25 @@ router.route('/signup')
  * @requires OAServer-controllers-users
  */
 router.route('/signin')
-.post(validateBody(schemas.authSchema), passportSignIn, UsersController.signIn);
+  .post(validateBody(schemas.authSchema), passportSignIn, UsersController.signIn);
 //sample path:  const res = await axios.post(`${location.origin}/api/auth/signin`, data);
+
+/**
+ * @callback OAServer-routers-oauth-signup
+ * @type {path}
+ * @requires passport
+ * @desc DOCS: this is a little different from signin - i doesn't need passport verification because there
+ * isn't supposed to be a current user. if a matching email exists, signup errors out with a message back
+ * to the user
+ * @requires OAServer-controllers-users
+ * @example router.route('/signup').post(validateBody(schemas.authSchema),UsersController.signUp);
+ * @see [OAClient-actions (linkback)]{@link module:OAClient-actions}
+ * @see [passport (linkback)]{@link module:passport}
+ * @requires OAServer-controllers-users
+ */
+router.route('/signup')
+.post(validateBody(schemas.authSchema),UsersController.signUp);
+//sample path:  const res = await axios.post(`${location.origin}/api/auth/signup`, data);
 
 router.route('/secret')
 .get(passportJWT, UsersController.secret);

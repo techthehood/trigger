@@ -4,7 +4,8 @@ import {Link, withRouter} from 'react-router-dom';
 import { observer, inject } from "mobx-react";
 
 // import * as actions from '../actions/';
-import { HOME_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
+import { CHAT_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
+// [Bootstrap navbar](https://getbootstrap.com/docs/4.0/components/navbar/)   
 
 // export default class Header extends Component {
 @observer
@@ -23,7 +24,7 @@ class Header extends Component {
     if(!this.passportStore.state.errorMessage){
       console.log("headed home");
       //dashboard redirect
-      this.props.history.push(HOME_PATH);
+      this.props.history.push(CHAT_PATH);
 
       //[wrapped in withRouter to get this history. push to work](https://stackoverflow.com/questions/44009618/uncaught-typeerror-cannot-read-property-push-of-undefined-react-router-dom)
     }// if
@@ -35,14 +36,19 @@ class Header extends Component {
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ marginBottom: "30px" }}>
-          <Link className="navbar-brand" to={HOME_PATH}>Passport Redux API Auth</Link>
-
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={DASHBOARD_PATH}>Dashboard</Link>
-              </li>
-            </ul>
+          <Link className="navbar-brand" to={CHAT_PATH}>Triggered</Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            { this.passportStore.state.isAuthenticated ?
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to={DASHBOARD_PATH}>Dashboard</Link>
+                </li>
+              </ul>
+            : null
+            }
 
             <ul className="nav navbar-nav ml-auto">
 
@@ -58,7 +64,7 @@ class Header extends Component {
 
               { this.passportStore.state.isAuthenticated ?
                 <li className="nav-item">
-                <Link className="nav-link" to={HOME_PATH} onClick={this.signOut}>Sign Out</Link>
+                <Link className="nav-link" to={CHAT_PATH} onClick={this.signOut}>Sign Out</Link>
                 </li> : null }
             </ul>
           </div>

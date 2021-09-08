@@ -37,7 +37,7 @@ const controls = {
   width: '100%',
   padding: '.5rem',
   position: 'fixed',
-  zIndex: 2,
+  zIndex: 3,
   backgroundColor: "rgb(0 0 0 / 36%)",
   backdropFilter: "blur(2px)",
 }
@@ -63,8 +63,12 @@ const Styles = {
   },
   header: {
     ...controls,
+    display: 'grid',
+    gridTemplateAreas: '"users . code options"',
+    gridTemplateColumns: '1fr 9fr 1fr 1fr',
     gridArea: 'header',
     top: 0,
+    zIndex: 4,
   },
   footer: {
     ...controls,

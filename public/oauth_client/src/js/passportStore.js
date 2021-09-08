@@ -15,6 +15,18 @@
       secret: ''
     }
 
+    // sponsor_id = null;
+    // client_id = null;
+
+    // @action setSponsor = (sId, sImg) => {
+    //   this.sponsor_id = sId;
+    //   this.sponsor_image = sImg;
+    // }// setSponsor
+
+    // @action setClient = (cId) => {
+    //   this.client_id = cId;
+    // }// setClient
+
     @observable state = { ...this.DEFAULT_STATE};
 
     @action setState = (obj) => {
@@ -22,8 +34,8 @@
       this.state = {...obj};
     }// setState
 
-    @action setAuth = (jwtToken) => {
-      this.state = {...this.state, token: jwtToken, isAuthenticated: jwtToken ? true : false};
+    @action setAuth = ({token, auth = false}) => {
+      this.state = {...this.state, token, isAuthenticated: auth};
     }
 
     @action signIn = async (data) => {

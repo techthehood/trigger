@@ -5,14 +5,20 @@
     <title></title>
     <!-- <link rel="stylesheet" href="./alight/css/style.css"> -->
     {{>meta}}
-    {{>oauth_links}}
+    {{!-- {{>oauth_links}} --}}
+    {{>(vendor 'bootstrap' use_local_files true)}}
+    {{>(vendor 'w3schools' use_local_files)}}
+    {{>(vendor 'oauth_links' use_local_files true)}}
 
   </head>
   <body>
-    {{>oauth_header}}
+    <div id="modal_cont" class="modal_home"></div>
+    <div id="oauth_root"></div>
+    {{!-- {{>oauth_header}} --}}
   	<script>
 
   	</script>
+    <div class="toaster_home"></div>
 
   </body>
 </html>

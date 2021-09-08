@@ -4,7 +4,7 @@
   import { observer, inject } from "mobx-react";
 
   // import * as actions from '../actions';
-  import { HOME_PATH } from '../paths/';
+  import { CHAT_PATH } from '../paths/';
 
   @observer
   class Dashboard extends Component {
@@ -26,7 +26,7 @@
       if (!this.passportStore.state.errorMessage) {
         console.log("headed home");
         //dashboard redirect
-        this.props.history.push(HOME_PATH);
+        this.props.history.push(CHAT_PATH);
         //[wrapped in withRouter to get this history. push to work](https://stackoverflow.com/questions/44009618/uncaught-typeerror-cannot-read-property-push-of-undefined-react-router-dom)
       }// if
 
@@ -40,7 +40,7 @@
           Our secret: <h3>{this.passportStore.state.secret}</h3>
           <div className="signing_btn_wrapper">
             <div className="sign-btn" key="signout">
-              <Link className="nav-link" to={HOME_PATH} onClick={this.signOut} >Sign Out</Link>
+              <Link className="nav-link" to={CHAT_PATH} onClick={this.signOut} >Sign Out</Link>
             </div>
           </div>
         </div>

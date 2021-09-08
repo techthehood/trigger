@@ -3,6 +3,8 @@ const router = express.Router();
 const cors = require('cors');// make sure not just anyone can use my post requests
 
 const corsOptions = require('../../../src/utils/cors-options');// use the main one in landing-pages src dir
+const keys = require('../../../configuration/keys');
+
 // const process_memory = require('../utils/process_memory.js');
 
 /**
@@ -23,10 +25,18 @@ const corsOptions = require('../../../src/utils/cors-options');// use the main o
     console.log("[trigger] req", req.baseUrl);
     console.log("[oauth client] entered");
 
+    
+    // res.setHeader('set-cookie',['samesite=strict; secure']);
+    res.cookie('d3Cookie', 'trigger', { sameSite: 'Lax', secure: true });
+    // set a legacy cookie for other browsers
+    res.cookie('d3Cookie-legacy', 'trigger', { secure: true });
+  // i think the second one overwrites the first one
+
     res.render('trigger', {
       title:'Help',
       name: 'Andrew Mead',
-      help_txt: 'Some help message'
+      help_txt: 'Some help message',
+      use_local_files: keys.use_local_files,
     })
   })
 

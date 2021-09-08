@@ -1,6 +1,6 @@
+$mp: !important;
 
-
-
+.toaster_home{z-index: 15;}
 .home_auth_cont{
   width: 100%;
   height: 60vh;
@@ -41,3 +41,21 @@
     flex-flow: column;
   }
 }
+
+.client_cnx_cont{
+  .bounce-loader{
+    width: 7rem;
+    div{
+      width: 2rem;
+      height: 2rem;
+    }// div
+  }// bounce-loader
+  .client_result_logo{
+    width: 13rem $mp;
+    &:after{
+      width: 12.5rem $mp;
+      height: 12.5rem $mp;
+      background-size: 15rem $mp;
+    }// :after
+  }// client_result_logo
+}// client_cnx_cont

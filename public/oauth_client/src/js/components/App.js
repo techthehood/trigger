@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import Header from "./Header";
+import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { HOME_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
+import { HOME_PATH, CHAT_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
 
 /**
  * @module OAClient-App
@@ -20,10 +21,12 @@ import { HOME_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/
 
 
 export default (props) => {
+
+  const {pathname} = useLocation();
   
   // if auth remove boilerplate
-  let test_path = HOME_PATH.replace(/\//ig, "");// this should work even if homepath is "/";
-  let path_remainder = location.pathname.split(`${test_path}/`)[1];// this will calculate trailing paths
+  let test_path = CHAT_PATH.replace(/\//ig, "");// this should work even if homepath is "/";
+  let path_remainder = pathname.split(`${test_path}/`)[1];// this will calculate trailing paths
   // console.log(`[App] history`, location);
   
   // useEffect(() => {

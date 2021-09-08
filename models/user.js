@@ -70,6 +70,10 @@ const userSchema = new Schema({
     },
     image_id: { type: Schema.Types.ObjectId },
     email_id: { type: Schema.Types.ObjectId }
+  },
+  clients:{
+    type: Array,
+    default: []
   }
 });
 

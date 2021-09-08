@@ -1,9 +1,12 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import io from 'socket.io-client';
 import useDrag from './useDrag';
-import MediaBtn from '../MediaBtn/MediaBtn';
+import MediaBtn from './MediaBtn';
+import ProfilePanel from '../ProfilePanel';
+import QRCoder from '../ProfilePanel/QRCoder';
 // import {BrowserView,MobileView,isBrowser,isMobile} from "react-device-detect";
+import { TriggerContext } from '../../triggerContext';
 
 const { Styles } = require('./styles');
 // require('../../icomoon/style.scss');
@@ -35,6 +38,8 @@ const App = (props) => {
   const [showCtrls, setShowCtrls] = useState(true);
   const moveTracker = useRef(false)//optional - helps desktop move events not trigger the switch
   const timer = useRef();
+
+  const TriggerStore = useContext(TriggerContext);
 
   // const pc_config = null;
   // configuration object example
@@ -292,14 +297,20 @@ const App = (props) => {
 
   const toggleAudio = () => {
     setAudio(prev => {
-      main_stream.current.getAudioTracks()[0].enabled = !prev;
+      try {
+        main_stream.current.getAudioTracks()[0].enabled = !prev;
+      } catch (error) {
+      }
       return !prev;
     });
   };
 
   const toggleVideo = () => {
     setVideo(prev => {
-      main_stream.current.getVideoTracks()[0].enabled = !prev;
+      try {
+        main_stream.current.getVideoTracks()[0].enabled = !prev;
+      } catch (error) {
+      }
       return !prev;
     });
   }
@@ -349,11 +360,20 @@ const App = (props) => {
 
   // LATER: test when in session - disabled until then
   let visible_class = (showCtrls) ? "visible" : "hidden";
+  let menu_options = {name:"trigr_menu", project:"trigger",  }
+  menu_options.sign_out = props.sign_out || false;// signout will be conditional
 
   return (
     <BrowserRouter>
       <div ref={appContainer} style={Styles.bg_style}>
-        <div className={`header ${visible_class}`} style={Styles.header}></div>
+        <div className={`header ${visible_class}`} style={Styles.header}>
+          {TriggerStore.client_id == null ?
+            // <ProfilePanel {...{ name: "trigr_qrcode", project: "trigger", left: false, icon: "qrcode" }} />
+            <QRCoder {...{ name: "trigr_qrcode", project: "trigger", left: false, icon: "qrcode" }} />
+            : null}
+          <ProfilePanel {...{ name: "trigr_users", project: "trigger", left: true, icon: "users"}} ></ProfilePanel>
+          <ProfilePanel {...menu_options}></ProfilePanel>
+        </div>
         <video
           style={main_class}
           ref={videoRef}

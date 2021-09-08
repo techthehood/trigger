@@ -1,0 +1,63 @@
+
+@mixin wearable{
+  @media only screen and (min-width:300px) and (max-width:324px)
+  {
+    @content;
+  }
+}// tiny-range
+
+@mixin mobile{
+  @media only screen and (min-width:320px) and (max-width:479px)
+  {
+    @content;
+  }
+}// mobile-range
+
+@mixin smartphone{
+  @media only screen and (min-width:480px) and (max-width:767px){
+    @content;
+  }
+}// tablet-range
+
+@mixin tablet{
+  @media only screen and (min-width:768px) and (max-width:991px)
+  {
+    @content;
+  }
+}// desktop-range
+
+@mixin desktop{
+  @media only screen and (min-width:992px) and (max-width:1999px)
+  {
+    @content;
+  }
+}// desktop-range
+
+
+/* AT LEAST THIS TALL*/
+@mixin wearable-min{
+  @media only screen and (min-width:300px){
+    @content;
+  }
+}// tiny-min
+
+@mixin mobile-min{
+  @media only screen and (min-width:480px)
+  {
+    @content;
+  }
+}// mobile-min
+
+@mixin tablet-min{
+  @media only screen and (min-width:768px)
+  {
+    @content;
+  }
+}// tablet-min
+
+@mixin desktop-min{
+  @media only screen and (min-width:992px)
+  {
+    @content;
+  }
+}// desktop-min

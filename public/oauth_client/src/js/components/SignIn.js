@@ -69,12 +69,13 @@ async responseGoogle(res){
   console.log('responseGoogle', res);
 
   // await this.props.oauthGoogle(res.accessToken);
+  // NOTE: localStorage see passportStore
   await this.passportStore.oauthGoogle(res.accessToken);
   
   if(!this.passportStore.state.errorMessage){
     //dashboard redirect
-    console.log("headed to the dashboard");
-    this.props.history.push(`${DASHBOARD_PATH}`);
+    console.log("headed to the chat");// not the dashboard
+    this.props.history.push(`${SUCCESS_PATH}`);
     // this.props.history.push(CORE_PATH);
 
     // NOTE: only for loading pages not part of this set of pages

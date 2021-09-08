@@ -1,0 +1,114 @@
+$mp:!important;
+
+// .arc_details_cont.core{
+//   z-index: 1010 $mp;
+//   display:none;
+// }
+// .block{
+//   display: block $mp;
+// }
+// .details_modal.detail{
+//   margin-top:2rem;
+//   max-height: 88vh;
+//   .details_content{
+//     max-height: 80vh;
+//     overflow-y: auto;
+//     border: 1px solid #ddd;
+//     margin-bottom: 10px;
+//     min-height: 200px;
+//   }
+// }
+
+.modal_cont.core{
+  // could be .modal_home but i think this is supposed to be .modal_cont
+  z-index: 1010 ;//$mp
+  // display:none;
+}
+.block{
+  display: block $mp;
+}
+
+.modal_temp_cont{
+  z-index: 3020 $mp;
+}
+.core_modal{
+  .modal_ctrls{
+    border-radius: 6px; border: 1px solid #ccc;
+    width: 100% $mp;
+    display: flex;
+  }
+  .modal_ctrls_wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: .5rem;
+    padding: 0 .5rem;
+    &.stack{flex-flow: column nowrap; gap: 0; height: unset;}
+  }
+  .topGoBtn{
+    top: -16px !important;
+    right: 32px !important;
+    z-index: 100;
+    padding: .17rem !important;
+  }
+  .glass_confirm {
+    background-image: linear-gradient(to bottom, #58c547, #0F8A09) !important;
+    color: #fff !important;
+  }
+}
+
+.modal_cont.inline{
+  .glassHouse{
+    display: grid;
+    grid-template-areas: "inner go can";
+    grid-template-columns: 5fr .5fr .5fr;
+    padding: unset;
+    margin: unset !important;
+    width: 100%;
+    .modal_ctrls_wrapper{
+      display: flex;
+      flex-flow: row nowrap;
+      gap: .5rem;
+      &.stack{flex-flow: column nowrap;}
+    }
+    .modal_ctrls{width: 2rem $mp;}
+    .goBtn{grid-area: go;}
+    .cancelBtn{grid-area: can;}
+  }// glassHouse
+  .glass_content{
+    min-height:unset;
+    min-height: unset;
+    margin: unset;
+    padding: .5rem .25rem 0;
+    grid-area: inner;
+  }// glass_content
+}// .modal_cont.inline
+
+
+/* may be needed*/
+.w3-modal {
+    padding-top: 25px !important;
+}
+
+div.glassHouse {
+    max-width: 30rem !important;
+}
+.glassHouse {
+    max-height: 650px;
+    width: 90%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 30px auto;
+    position: relative;
+}
+.looking_glass {
+    top: -13px !important;
+    right: -10px !important;
+}
+.glass_content {
+    max-height: 550px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    min-height: 200px;
+}

@@ -1,0 +1,22 @@
+@import './queries';
+@import './colors';
+@import './heartbeat';
+@import './ping';
+@import './fade';
+@import './slide';
+$mp: !important;
+
+%active{background-color: var(--active-blue) $mp; color: white $mp;}
+%active2{border: 2px solid var(--active-blue) $mp;}
+.active-glow{
+  border: 2px solid var(--active-blue) $mp;
+  box-shadow: 0px 0px 10px 1px var(--active-blue);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll::-webkit-scrollbar, .hide_scroll::-webkit-scrollbar {
+  display: none; }
+
+/* Hide scrollbar for IE and Edge */
+.hide-scroll, .hide_scroll {
+  -ms-overflow-style: none; }
