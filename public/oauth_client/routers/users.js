@@ -16,6 +16,13 @@ const test_date = require('../Controllers/test_date');
 const getGuestToken = require('../Controllers/getGuestToken');
 const registerClient = require('../Controllers/registerClient');
 const validateToken = require('../Controllers/validateToken');
+const searchContacts = require('../Controllers/searchContacts');
+const getLinkData = require('../Controllers/getLinkData');
+const setLinkData = require('../Controllers/setLinkData');
+const deleteLink = require('../Controllers/deleteLink');
+const updateLinkData = require('../Controllers/updateLinkData');
+const getPreviewData = require('../Controllers/getPreviewData');
+
 
 // const process_memory = require('../utils/process_memory.js');
 users.use(cp());
@@ -32,6 +39,18 @@ users.get('/test_date', test_date);
 users.get('/getGuestToken', getGuestToken);
 
 users.get('/registerClient', registerClient);
+
+users.post('/searchContacts', searchContacts);
+
+users.post('/getLinkData', getLinkData);
+
+users.post('/setLinkData', setLinkData);
+
+users.post('/deleteLink', deleteLink);
+
+users.post('/updateLinkData', updateLinkData);
+
+users.post('/getPreviewData', getPreviewData);
 
 // users.get('/getUserPrefs', UserController.get_user_prefs);
 // users.get('/getUserPrefs', getUserPrefs);

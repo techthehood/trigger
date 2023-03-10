@@ -2,9 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    {{!-- <title></title> --}}
     <!-- <link rel="stylesheet" href="./alight/css/style.css"> -->
+    <link rel="manifest" href="./oauth_client/src/js/manifest.json" />
     {{>meta}}
+    {{>icomoon}}
     {{!-- {{>oauth_links}} --}}
     {{>(vendor 'bootstrap' use_local_files true)}}
     {{>(vendor 'w3schools' use_local_files)}}
@@ -13,6 +15,7 @@
   </head>
   <body>
     <div id="modal_cont" class="modal_home"></div>
+    {{>loader}}
     <div id="oauth_root"></div>
     {{!-- {{>oauth_header}} --}}
   	<script>
@@ -21,4 +24,8 @@
     <div class="toaster_home"></div>
 
   </body>
+  <script>
+    // window[`SITE_ROOT`] = `${location.origin}/trigger`;
+    window['IMG_URL'] = `${location.origin}/oauth_client/src/images/`;
+  </script>
 </html>

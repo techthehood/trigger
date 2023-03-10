@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";// it seems to already have the reference - but not everywhere (storybook)
-import React, { useRef } from "react";
+import /*React,*/ { useRef } from "react";
 // console.log("[modal]");
 require("./modal.scss");
 const {class_maker} = require('../../tools/class_maker');

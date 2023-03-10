@@ -32,6 +32,8 @@ module.exports = {
   SITE_SERVER: process.env.SITE_SERVER,
   DOMAIN_NAME: process.env.DOMAIN_NAME,
   HOSTNAME: process.env.DOMAIN_NAME.split(".")[0],
+  SERVER_PORT: process.env.SERVER_PORT,
+  LOCAL_PORT: process.env.LOCAL_PORT,
 }
 
 

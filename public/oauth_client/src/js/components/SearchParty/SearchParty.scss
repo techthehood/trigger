@@ -1,0 +1,142 @@
+$mp: !important;
+  %no-mar, %no_mar{
+    margin: unset $mp;
+  }
+  %no_pad{
+    padding: unset $mp;
+  }
+
+.search_cont{
+  display: grid $mp;
+  *{min-height:0; min-width:0;}
+  grid-template-areas:
+      "label"
+      "filter"
+      "log";
+  grid-template-rows: .8fr 2fr 1fr;
+  position: sticky;
+  top: 0;// this may change when i implement vScroll
+  background: #fff;
+  // height: 8rem;
+  z-index: 1;
+  gap: .5rem;
+  .search_label{@extend  %no_mar;}
+  &.overlay{
+      padding: unset $mp;
+      .TLabel {
+        margin: 2% 2% 0;
+      }// TLabel
+      .TCont {
+        margin: 0 2%;
+      }// TCont
+      .searchParty_iconWall_wrapper{
+        position: absolute;
+        padding: .5rem;
+        background: #fff;
+        margin: unset !important;
+      }// searchParty_iconWall_wrapper
+  }// popout
+  .filter_wrapper{
+    grid-area: filter; border-bottom: unset $mp;
+    @extend  %no_pad;
+    .filter_cont{@extend  %no_mar;}
+    .filter_option_wrapr{@extend  %no_mar;}
+    .filter_iWall_content{@extend  %no_pad;}
+    .filter_iWall_iconWall_cont{padding: .25rem 0 !important;}
+  }
+  .filter_iWall_modal{ background: unset;}
+  .search_log{
+    grid-area: log;
+    width: 100%;
+    padding:.25rem;
+    @extend  %no_mar;
+    p{@extend  %no_mar;}
+    .loader{
+      height: 1.5rem;
+      width: 1.5rem;
+      border-width: .25rem;
+    }// loader
+  }// search_log
+}// search_cont
+
+div.srchInp_ICont.ICont{
+  display: grid;
+  grid-template-areas:"input go options";
+  grid-template-columns: 8fr 1fr 1fr;
+  padding: unset $mp;
+  gap:.5rem;
+  padding: .25rem !important;
+
+  .srchInp_TInput{
+    grid-area: input;
+    &:focus{outline: white;}
+  }
+  .srchInp_inBtn{
+    grid-area: go;
+    background-color: #87cf96 !important;
+    color: white;
+  }
+  .srchInp_options{
+    grid-area: options;
+    border-color: #ddd;
+    &.heartbeat{
+      color: #d4d414;
+    }
+  }
+  .srchInpBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative $mp;
+    height: 26px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px 7px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: unset;
+    width: 100% $mp;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    z-index: 1;
+  }
+}
+
+.search_options{
+  position: relative;
+  .searchParty_iconWall_wrapper{
+    // position: absolute;// this may change with vScroll
+    width: 100%;
+    margin-top: .25rem !important;
+    // .filter_iWall_modal{
+    //   display: flex;
+      // .filter_iWall_content{
+      //   border: unset;
+      //   padding: 0.5rem 0.25rem;
+      //   flex: 1 auto;
+        .searchParty_iconWall_cont {
+          display: flex;
+          padding: unset;
+          &.charcoal{
+            background-color: #676363;
+            border-radius: 7px 7px 25px 25px;
+            *{
+              color: #fff;
+              border: unset;
+            }// snap_btn
+          }// charcoal
+          div{flex:1 auto; min-width: 40px;}
+        }
+      // }// filter_iWall_content
+    // }// filter_iWall_modal
+  }// filter_option_wrapr
+}// search_options
+
+.sp_modal_cont
+{
+  .iWall_modal{
+    margin: 0 auto;
+  }
+}

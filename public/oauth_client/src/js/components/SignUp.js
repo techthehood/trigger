@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import /*React,*/ {Component} from 'react';
+// const faker = require('faker');
+// import faker from 'faker';
 // import {reduxForm, Field} from 'redux-form'
 // import { connect } from 'react-redux';
 // import { compose } from 'redux';
@@ -47,17 +49,21 @@ class SignUp extends Component {
 async onSubmit(formData){
   console.log('onSubmit called!');
   console.log("[formData]",formData);
+  const values = await this.form_data.getValues();
+  const {email, password} = await this.form_data.getValues();
+
+  debugger;
 
   // We need to call some action
   // await this.props.signUp(formData)// runs the signUp action
-  await this.passportStore.signUp(formData)
+  await this.passportStore.signUp({email, password});// formData failed
 
   if(!this.passportStore.state.errorMessage){
     //dashboard redirect
     console.log("headed to the dashboard");
     // this.props.history.push(DASHBOARD_PATH);
     // this.props.history.push(CORE_PATH);
-    location.replace(`${location.origin}/${SUCCESS_PATH}`);
+    location.replace(`${location.origin}${SUCCESS_PATH}`);// path already has leading slash
   }// if
 }
 
@@ -72,7 +78,7 @@ async responseGoogle(res){
     console.log("headed to the dashboard");
     // this.props.history.push(DASHBOARD_PATH);
     // this.props.history.push(CORE_PATH);
-    location.replace(`${location.origin}/${SUCCESS_PATH}`);
+    location.replace(`${location.origin}${SUCCESS_PATH}`);// path already has leading slash
   }// if
 }// responseGoogle
 
@@ -87,12 +93,23 @@ async responseFacebook(res){
       //dashboard redirect
       // this.props.history.push(DASHBOARD_PATH);
       // this.props.history.push(CORE_PATH);
-      location.replace(`${location.origin}/${SUCCESS_PATH}`);
+      location.replace(`${location.origin}${SUCCESS_PATH}`);// path already has leading slash
     }// if
 }// responseFacebook
 
   render(){
-    const { handleSubmit } = this.form_data;
+    const { handleSubmit, register } = this.form_data;
+    let mail_data = {};
+    mail_data.value = faker.internet.email();
+
+    let pass_data = {};
+    pass_data.value = faker.random.uuid();
+
+    // [randomizing faker images ](https://stackoverflow.com/questions/46804608/faker-shows-the-same-picture-all-the-time-how-to-avoid-it)
+
+    // NOTE: there may not be a signup the slow way. only oauth
+
+
     return (
       <div className="row">
         <div className="col auth_form">
@@ -104,6 +121,9 @@ async responseFacebook(res){
               id="email"
               label="Enter your email"
               placeholder="example@example.com"
+              // {...register("email")}
+              register={register}
+              {...mail_data}
               />
             </fieldset>
             <fieldset>
@@ -113,6 +133,8 @@ async responseFacebook(res){
               id="password"
               label="Enter your password"
               placeholder="yoursuperpassword"
+              register={register}
+              {...pass_data}
               />
             </fieldset>
 

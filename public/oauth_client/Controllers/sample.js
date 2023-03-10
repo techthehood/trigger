@@ -27,9 +27,9 @@
     } catch (e) {
       let err_msg = "[sample] an error occured";
       console.error(chalk.red(err_msg),e);
-      res.json({
-        message:err_msg,
-        error: e
+      res.status(500).json({
+        message: err_msg,
+        error: error
       });
     }
 }// sample

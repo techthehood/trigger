@@ -1,0 +1,13 @@
+$mp: !important;
+
+.VirtualScroll.viewport {
+  padding-bottom:2rem;
+  min-height: 300px;// min height failsafe just in case
+  width: 100%;
+  .visible_area {
+    width: 100%;
+    .inner_content{
+      width:100%;
+    }/*inner_content*/
+  }/*visible_area*/
+}/*viewport*/

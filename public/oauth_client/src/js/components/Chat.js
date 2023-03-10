@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import /*React,*/ { Fragment, useContext} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 // import { connect } from 'react-redux';
 import { observer, inject } from "mobx-react";
@@ -7,21 +7,27 @@ import Rocket from "./Rocket";
 
 import * as actions from '../actions';
 import { HOME_PATH, CHAT_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths';
+import { TriggerContext } from '../triggerContext';
 
 const Home = observer((props) => {
-
   const passportStore = props.store;
+  const TriggerStore = useContext(TriggerContext);
   // const passportStore = useContext(PassportContext);
 
   const signOut = async () => {
     console.log('signOut got called!');
     // await props.signOut();
-    await passportStore.signOut();
+    
+    if (TriggerStore.type == "sponsor"){
+      // only let sponsors sign out at this stage
+      await passportStore.signOut();
+    }
 
     if (!passportStore.state.errorMessage){
       console.log("headed home");
       //dashboard redirect
-      props.history.push(HOME_PATH);
+      // props.history.push(HOME_PATH);
+      location.replace(`${location.origin}${HOME_PATH}`);// clean break - path already has leading slash
       //[wrapped in withRouter to get this history. push to work](https://stackoverflow.com/questions/44009618/uncaught-typeerror-cannot-read-property-push-of-undefined-react-router-dom)
     }// if
 

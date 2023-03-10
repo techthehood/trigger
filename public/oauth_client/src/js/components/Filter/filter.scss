@@ -1,0 +1,96 @@
+
+  $mp: !important;
+
+  .filter_wrapper{
+    position: sticky;
+    top:0;
+    z-index: 10;
+    // padding: .25rem .25rem .5rem;
+    padding: .25rem 0 .5rem;
+    // background: #fff;
+    border-bottom: thin solid #ccc;
+    position: relative;
+    .filter_cont  {
+      display: flex;
+      // margin:unset $mp;
+      padding: 3px .25rem 3px 7%;
+      margin: 0 .5rem $mp;
+      flex: 1 auto;
+      width: unset;
+      .filter_input{
+        background: #9a9783; color: white; padding: 0 .5rem;
+        &::placeholder { color: #000;}
+      }
+      .filter_reset, .filter_input_btns{
+        display: flex;
+        align-items: center;
+        margin: 0 .25rem;
+        color: #9a9783;
+        &.heartbeat{ color: #d4d414;}
+      }/*filter_reset*/
+    }/*filter_cont*/
+    .filter_option_wrapper{
+      display: grid;
+      grid-template-areas: "scope all options none back";
+      grid-template-columns: 1fr 1fr 8fr 1fr 1fr;
+      gap: .25rem;
+      .filter_option_cont{
+        grid-area: options;
+        display: flex $mp;
+        flex-flow: row nowrap;
+        flex: 1;
+        overflow-x: auto;
+      }// filter_option_cont
+      .filter_option_all{grid-area: all;}
+      .filter_option_scope{grid-area: scope;}
+      .filter_option_none{grid-area: none;}
+      .filter_option_back{grid-area: back;}
+      .filter_option_btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2px 3px $mp;
+        flex: 0 1 3rem $mp;
+        padding: 0px $mp;
+        border-radius: 0px $mp;
+        height: 1.75em;
+        &.static{width: 100% $mp;}
+        &.inactive{
+          color: white;
+          background-color: #bbb $mp;
+        }// inactive
+        &.active{
+          color: white;
+          background-color: #2d2dad  $mp;
+        }
+      }// filter_option_btn
+    }// filter_option_wrapper
+    .filter_option_wrapr{
+      // position: absolute;
+      width: 100%;
+      margin-top: .25rem !important;
+      .filter_iWall_modal{
+        display: flex;
+        background-color: unset;
+        .filter_iWall_content{
+          border: unset;
+          padding: 0.5rem 0.25rem;
+          flex: 1 auto;
+          .filter_iWall_iconWall_cont{
+            &.charcoal{
+              background-color: #676363;
+              border-radius: 7px 7px 25px 25px;
+              *{
+                color: #fff;
+                border: unset;
+              }// snap_btn
+            }// charcoal
+            display: flex;
+            div{flex:1 auto; min-width: 40px;}
+            .iconWall_btn{border: unset; font-size: 1.6em;}
+          }
+        }// filter_iWall_content
+      }// filter_iWall_modal
+    }// filter_option_wrapr
+
+  }/*filter_wrapper*/

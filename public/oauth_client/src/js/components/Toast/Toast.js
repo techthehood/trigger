@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom';
 import "./Toast.scss";
 // const {toaster} = require('./toaster.js');// produces an error - is not a function

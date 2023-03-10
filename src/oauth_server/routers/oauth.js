@@ -2,9 +2,10 @@
 // const router = express.Router;
 const router = require('express-promise-router')();
 const passport = require('passport');
-// const passportConfig = require('../passport');
+// const passportConfig = require('../passport');// why not here?
 
-const { validateBody, schemas } = require('../helpers/routeHelpers');// used to validate email and password
+// const { validateBody, schemas } = require('../helpers/routeHelpers');// used to validate email and password
+const { validateBody, schema } = require('../helpers/routeHelpers');// used to validate email and password
 const UsersController = require('../controllers/users');
 const passportSignIn = passport.authenticate('local', {session: false });
 const passportJWT = passport.authenticate('jwt', {session: false });
@@ -38,7 +39,7 @@ const passportFacebookToken = passport.authenticate('facebookToken', { session: 
  * @requires OAServer-controllers-users
  */
 router.route('/signin')
-  .post(validateBody(schemas.authSchema), passportSignIn, UsersController.signIn);
+  .post(validateBody, passportSignIn, UsersController.signIn);
 //sample path:  const res = await axios.post(`${location.origin}/api/auth/signin`, data);
 
 /**
@@ -55,7 +56,8 @@ router.route('/signin')
  * @requires OAServer-controllers-users
  */
 router.route('/signup')
-.post(validateBody(schemas.authSchema),UsersController.signUp);
+.post(validateBody, UsersController.signUp);
+// NOTE: see src/helpers/routeHelpers.js to toggle manual_signon (currently false/disabled)
 //sample path:  const res = await axios.post(`${location.origin}/api/auth/signup`, data);
 
 router.route('/secret')

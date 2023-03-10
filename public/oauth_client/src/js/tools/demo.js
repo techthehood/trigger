@@ -2,6 +2,7 @@ import { obj_exists } from "./exists";
 
 export const demo = (cls,callback,) => {
 
+    return callback();
   // defend from triggering multiple elements during the waiting period
   if(obj_exists(VIEWER_DATA,"DEMO.timer")) clearTimeout(VIEWER_DATA.DEMO.timer);
   try {

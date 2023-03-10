@@ -1,0 +1,21 @@
+$mp: !important;
+
+.miniWonder_wrapper {
+
+  display: flex;
+  justify-content: space-between;
+  .miniWonder_wrapper.wonder_btn_wrapper{
+    position: relative;
+      bottom: unset;
+      button.WonderBtn {
+          position: relative; 
+          bottom: unset; 
+          padding: unset;
+          font-size: 1.3rem;
+      }// button
+      .wonder_btn_pop_menu {
+        top: -2rem;
+        right: 0rem;
+      }// wonder_btn_pop_menu
+  }// miniWonder_wrapper wonder_btn_wrapper
+}// miniWonder_wrapper 

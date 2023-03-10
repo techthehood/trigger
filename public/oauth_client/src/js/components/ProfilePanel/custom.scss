@@ -1,6 +1,26 @@
 
+$mp: !important;
 
-.trigr_users{ grid-area: users;}
+.trigr_users{ 
+  grid-area: users;
+  #pp_sidebar{
+    background: white;
+    background-image: unset $mp;
+    width: 20em !important;
+    background: #000000c2;// #dadcd4
+    &.left{
+      left: -21em;
+      &.active{left: -0.5rem;}
+    }// left
+    .pp_close_cont{
+      width: 100%;
+      background: #9a9783;
+      color: black;
+      height: 2rem;
+      justify-content: flex-end;
+    }//pp_close_cont
+  }//  pp_sidebar
+}// trigr_users
 .trigr_qrcode{ grid-area: code;}
 .trigr_menu{ grid-area: options;}
 

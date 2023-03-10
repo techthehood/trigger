@@ -1,0 +1,100 @@
+$mp: !important;
+#pp_sidebar.trigr_menu{
+  display: grid;
+  grid-template-areas:
+  "content"
+  "footer";
+  padding: .5rem $mp;
+  grid-template-rows: 90% 4rem;
+
+    .pp_close_cont{
+        position: absolute;
+          right: 1em;
+          top: 1em;
+          z-index: 1;
+          height: unset;
+          .pp_panel_cls_btn {
+            // darken the pp close btn
+            background: #00000040;
+          }// pp_panel_cls_btn
+      }// pp_close_cont
+
+  .pp_mobx_cont, .pp_mxr_cont{grid-area: content;}
+  #pp_content_cont{
+    grid-area: content;
+    .dashboard_wrapper{
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+      gap: .5rem;
+      .dashboard_header{
+        height: 20rem;
+        grid-area: profile;
+        display: grid;
+        grid-template-rows: 3.5rem 8.5rem 2.5rem;
+        grid-template-areas:
+        "top"
+        "profile"
+        "name";
+        position: relative;
+        // z-index: -1;
+        .dash_profile {
+          grid-area: profile;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .dash_profile_icon{font-size: 6rem;}
+          .image_area, .canvas_area{
+            display:flex; justify-content: center;
+            // hack until i fix master_image
+            img, canvas{width: 8rem; height: 8rem;}
+            &.d3-profile-rounded{
+              border-radius: unset;
+              border: unset;
+            }
+          }//image_area
+        }// dash_profile
+        .dash_title_cont{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+          grid-area: name;
+          text-transform: capitalize;
+          .dash_title{max-width: 145px; word-break: break-all;}
+          .dash_form{font-size: .9rem; padding: unset; cursor: pointer; background: #00000040;}
+        }// dashboard_username
+      }// dashboard_header
+      .dashboard_settings{
+        grid-area: settings;
+        height: 100%
+      }// dashboard_settings
+    }// dashboard_wrapper
+  }// pp_content_cont
+  .pp_sign_out{grid-area: footer;}
+}//pp_sidebar
+
+.dashboard_settings{
+    padding-top: 2rem;
+    overflow-y: auto;
+  .access_select_icon_cont, .miniForm_cont {
+    width: 90%;
+    .switch_label{font-size: .8rem;}
+  }// access_select_icon_cont
+  input:checked + .slider {
+    background-color: var(--active-blue,#38c) $mp;
+  }
+  .raw_dash{
+    margin: .3em auto;
+    width: 90%;
+    hr{
+      margin: 0.75rem 1rem;
+      border-width: 0.15rem;
+      border-top: 1px solid #eeeeee45;
+    }// hr
+    .rawDrop_display_cont {
+      background: #00000036;
+      hr:last-child{display: none;/*works*/}
+    }// rawDrop_display_cont
+  }// raw_dash
+}

@@ -1,0 +1,18 @@
+
+$mp: !important;
+
+.rich_cont{width:100%;}
+.rich_box{width:90%;margin:5px auto;padding:10px 0px;background-color: #e9e9e9;}
+.rich_box.no_preview{display:flex; align-items: center; justify-content: center; min-height: 17rem;}
+.rich_title{font-size:.8rem !important;font-weight: bold;padding:10px;margin:2.5px 5px;}
+.rich_image_cont{text-align: center;margin:2.5px 5px; position: relative;}
+.rich_image_copy_btn{position: absolute; right: 0;}
+.rich_img{width:80% !important; margin:0px auto !important;}
+.rich_img_ImgCanvas.rich_img,.rich_img_ImgImage.rich_img{width:100% !important;}
+
+
+.rich_desc_cont{position:relative;}
+.rich_description{font-size:.7rem !important;padding:15px 10px 5px;margin:2.5px 5px;max-height:100px;text-overflow: ellipsis;overflow:hidden;
+text-align: left;}
+.rich_desc_btn{width:18px !important;height:18px !important; position:absolute;top:-15px !important;right:-3px !important;}
+.rich_desc_btn:after{background-color:rgba(175, 12, 12, 0.44) !important;}

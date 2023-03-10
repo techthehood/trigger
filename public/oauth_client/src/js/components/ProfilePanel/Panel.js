@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from "react";
+import /*React,*/ { forwardRef, useEffect, useRef } from "react";
 require('./ProfilePanel.scss');
 require('./style.scss');
 
@@ -10,6 +10,7 @@ const Panel = forwardRef(({
   left = false,
   children,
   sign_out = false,
+  exit_text = "Sign Out",
 }, ref) => {
   // useEffect(() => {
   //   let sign_out_btn = document.querySelector(".pp_sign_out");
@@ -22,16 +23,20 @@ const Panel = forwardRef(({
   //     location.reload();
   //   })
   // }, [])
+  // const sidebar = useRef();
   const sidebar_id = `pp_sidebar${uuid}`;
   const pos = left ? "left" : "";
+
+  // if(typeof ref.current == "undefined") ref.current = {};
+  // if(typeof ref.current.sidebar == "undefined") ref.current.sidebar = sidebar;
 
   return (
     <div className={`wrapper ${name} ${project} ${pos}`} onClick={(e) => e.stopPropagation()/*click catcher*/}>
       {/* <!-- Sidebar --> */}
-      <nav ref={ref} id={sidebar_id} className={`pp_panel dark_bg ${name} ${project} ${pos}`}>
+      <nav ref={ref} id={sidebar_id} className={`pp_panel pp_sidebar dark_bg ${name} ${project} ${pos}`}>
 
         <div id="pp_close_cont" className={`pp_close_cont ${name} ${project} ${pos}`}>
-          <div id="pp_panel_cls_btn" className={`${sidebar_id} ${name} ${project} ${pos} pp_panel_cls_btn pp_btn pp_dismiss close_btn icon-cross`}
+          <div id="pp_panel_cls_btn" className={`${sidebar_id} ${name} ${project} ${pos} pp_panel_cls_btn pp_dismiss close_btn icon-cross`}
           onClick={(e) => {
             // document.querySelector(`#${sidebar_id}`).classList.remove('active');
             e.preventDefault();// all these need preventDefault to work otherwise id clicks the parent btn
@@ -45,7 +50,7 @@ const Panel = forwardRef(({
           onClick={() => {
             sign_out();
           }}
-        >Sign Out</div>
+        >{exit_text}</div>
         : null}
       </nav>
 

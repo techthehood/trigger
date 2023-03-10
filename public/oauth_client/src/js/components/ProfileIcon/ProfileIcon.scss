@@ -1,0 +1,39 @@
+$mp: !important;
+// see Snapper.scss
+// .snap_profile{
+//   height: 35px;
+//   width: 35px;
+//   cursor: pointer;
+//   .image_area {
+//     height: 100%;
+//     width: 100%;
+//   }// image_area
+//   .snap_profile_icon{font-size: 1.6rem $mp;}
+//   .d3-profile-rounded {border-width: 2px $mp;}
+//   img, canvas{
+//     height: 100%;
+//     width: 100%;
+//     object-fit: cover;
+//   }// img, canvas
+// }// snap_profile
+
+%panel_profile{
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  .image_area {
+    height: 100%;
+    width: 100%;
+  }// image_area
+  .panel_profile_icon{font-size: 1.4rem $mp;}
+  .d3-profile-rounded {border-width: 2px $mp;}
+  img, canvas{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }// img, canvas
+}// snap_profile
+
+.panel_profile{
+  @extend %panel_profile;
+}

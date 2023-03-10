@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const chalk = require('chalk');
-const { DOMAIN_NAME } = require('../../configuration/keys');
+const { DOMAIN_NAME, LOCAL_PORT } = require('../../configuration/keys');
 const display_console = true;
 
 dotenv.config();
@@ -10,13 +10,14 @@ var whitelist = [
   `https://www.${DOMAIN_NAME}`,
   `https://beta.${DOMAIN_NAME}`,
   `https://alt.${DOMAIN_NAME}`,
+  `https://trigger.${DOMAIN_NAME}`,
 ];
 
 if (process.env.NODE_ENV == "development") {
-  whitelist.push('http://localhost');
+  whitelist.push(`http://localhost:${LOCAL_PORT}`);
 }
 
-if (display_console || false) console.log(chalk.yellow(`[cors-options] whitelist `), whitelist);
+if (display_console || true) console.log(chalk.yellow(`[cors-options] whitelist `), whitelist);
 
 // this works
 // var corsOptions = {
@@ -30,7 +31,7 @@ if (display_console || false) console.log(chalk.yellow(`[cors-options] whitelist
 const corsOptions = {
   methods: "GET,POST",
   origin: function (origin, callback) {
-    if (display_console || false) console.log("[cors origin]", origin);//sometimes its undefined
+    if (display_console || true) console.log("[cors origin]", origin);//sometimes its undefined
     if (!origin) {
       if (display_console || false) console.log(`[no origin detected]`, origin);
       return callback(null, true);

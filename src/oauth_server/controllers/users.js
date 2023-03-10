@@ -1,11 +1,14 @@
 // const User = require('../models/user');
 const chalk = require('chalk');
+const faker = require('faker');
 const User = require('../../../models/user');// centralized models
 const JWT = require('jsonwebtoken');
 const {JWT_SECRET, DOMAIN_NAME} = require('../../../configuration/keys')
 const {signToken} = require('../../../configuration/signToken');
 // const { initiate_starter_data } = require('./setup');
 const display_console = true;
+const add_fake_data = false;
+// see src/helpers/routeHelpers.js to toggle manual_signon
 
 // const signToken = user => {
 //   return JWT.sign({
@@ -39,10 +42,10 @@ module.exports = {
     // expects Email & Password
     // req.value.body
     // if(display_console || false) console.log("content of req.value.body",req.value.body);
-    if(display_console || false) console.log('UsersController.signUp() called!');
+    if(display_console || true) console.log('UsersController.signUp() called!');
     // const email = req.value.body.email;
     // const password = req.value.body.password;
-    const {email, password } = req.value.body;//see helpers/routeHelpers for src of on req.value.body
+    const {email, password } = req.body;//see helpers/routeHelpers for src of on req.value.body
 
     //  Check if there is a user with the same email
     const foundUser = await User.findOne({"local.email":email});
@@ -53,14 +56,23 @@ module.exports = {
     //NOW: signUp is going to need to create default data - maybe signIn too (fix missing data)
     // create a new user
 
+    let faker_data = add_fake_data ? {
+      username: (email.split('@')[0]),// for faker data 
+    } : {};
+
+    // [randomizing faker images ](https://stackoverflow.com/questions/46804608/faker-shows-the-same-picture-all-the-time-how-to-avoid-it)
+
 
     const newUser = new User({
       method: "local",
       local:{
         email,
-        password
-      }
+        password,
+        image: `${faker.image.nature()}?random=${Date.now()}`
+      },
+      ...faker_data,
     });
+
     await newUser.save();
 
     // initiate_starter_data({user:newUser});

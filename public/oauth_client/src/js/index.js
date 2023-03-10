@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -26,12 +26,13 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import AuthGuard from "./components/HOCs/authGuard";
 import Dashboard from "./components/Dashboard";
+import ErrorBoundary from './components/Error';
 // import reducers from "./reducers/";
 require("./components/components.scss");
 require("../css/icons.scss");
 require("../css/d3po.scss");
-require("../css/style.scss");
-
+require("../css/style.scss"); 
+require("../../../icomoon/d3po.scss");
 
 
 import { HOME_PATH, CHAT_PATH, CLIENT_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from './paths/'
@@ -65,8 +66,18 @@ Promise.resolve()
 
   let user = obj_exists(result, "data.user") ? result.data.user : undefined;
   if(user){
-    if(exists(user.sponsor_id)) triggerStore.setSponsor(user.sponsor_id, user.image);
-    if(exists(user.client_id)) triggerStore.setClient(user.client_id);
+    if (obj_exists(user,"sponsor.sponsor_id")){ 
+      // let prep_sponsor = {
+      //   sponsor_id: user.sponsor.sponsor_id,
+      //   image: user.sponsor.image,
+      //   default_image: user.sponsor.default_image
+      // }
+
+      // if (user.sponsor.username) prep_sponsor.username = user.sponsor.username;
+      // triggerStore.setSponsor({ ...prep_sponsor});
+      triggerStore.setSponsor({ ...user.sponsor });
+    }
+    if(obj_exists(user,"client.client_id")) triggerStore.setClient(user.client.client_id);
   }// if
 
 }).catch((err) => {
@@ -96,6 +107,7 @@ Promise.resolve()
      * <code>//code example </code>
      * @requires reduxThunk applyMiddleware
      */
+    <ErrorBoundary>
     <PassportProvider store={passportStore}>
       <TriggerProvider store={triggerStore}>
         <Router>
@@ -110,9 +122,15 @@ Promise.resolve()
           </App>
         </Router>
       </TriggerProvider>
-    </PassportProvider>,
+    </PassportProvider>
+    </ErrorBoundary>,
     document.querySelector('#oauth_root'));
 })
+/**  
+ * GOTCHA: Route render props are limited to route, location, and history - all other props are added to 
+ * passportStore though the App component
+ * [Route props](https://reactrouter.com/web/api/Route/route-render-methods)
+*/
 
 
 

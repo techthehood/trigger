@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import /*React,*/ {Component} from 'react';
 // import {reduxForm, Field} from 'redux-form'
 // import { connect } from 'react-redux';
 // import { compose } from 'redux';
@@ -12,92 +12,93 @@ import CustomInput from './CustomInput';
 import { observer, inject } from "mobx-react";
 
 
-   /**
-    * @module OAClient-SignIn
-    * @category Auth
-    * @subcategory client
-    * @desc some desc
-    */
-   
-   /**
-    * @file
-    */
-   
-   /**
-    * @class OAClient-SignIn
-    * @extends Component
-    * @desc **SignIn component (react)**
-    * location: oauth_client\src\js\components\SignIn
-    *
-    * @requires OAClient-actions
-    * @see [OAClient-index (linkback)]{@link module:OAClient-index}
-    */
-   // export default class SignIn extends Component {
-     @observer
-     class SignIn extends Component {
-       
-       constructor(props){
-         super(props);
-         this.onSubmit = this.onSubmit.bind(this);
-         this.responseGoogle = this.responseGoogle.bind(this);
-         this.responseFacebook = this.responseFacebook.bind(this);
-         this.passportStore = this.props.store;
-         this.form_data = this.passportStore.form_data;
-        }
-        
-        
-        async onSubmit(formData){
-          console.log('onSubmit called!');
-          console.log("[formData]",formData);
+/**
+* @module OAClient-SignIn
+* @category Auth
+* @subcategory client
+* @desc some desc
+*/
 
-          return;
-          
-          // We need to call some action
-          // await this.props.signIn(formData)// runs the signIn action
-          await this.passportStore.signIn(formData);
-          
-          if(!this.passportStore.state.errorMessage){
-            //dashboard redirect
-            console.log("headed to the dashboard");
-            // this.props.history.push(DASHBOARD_PATH);
-    // this.props.history.push(CORE_PATH);
-    location.replace(`${location.origin}/${SUCCESS_PATH}`);
-  }// if
-}
+/**
+* @file
+*/
 
-async responseGoogle(res){
-  console.log('responseGoogle', res);
-
-  // await this.props.oauthGoogle(res.accessToken);
-  // NOTE: localStorage see passportStore
-  await this.passportStore.oauthGoogle(res.accessToken);
+/**
+* @class OAClient-SignIn
+* @extends Component
+* @desc **SignIn component (react)**
+* location: oauth_client\src\js\components\SignIn
+*
+* @requires OAClient-actions
+* @see [OAClient-index (linkback)]{@link module:OAClient-index}
+*/
+// export default class SignIn extends Component {
+@observer
+class SignIn extends Component {
   
-  if(!this.passportStore.state.errorMessage){
-    //dashboard redirect
-    console.log("headed to the chat");// not the dashboard
-    this.props.history.push(`${SUCCESS_PATH}`);
-    // this.props.history.push(CORE_PATH);
+  constructor(props){
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
+    this.passportStore = this.props.store;
+    this.form_data = this.passportStore.form_data;
+  }
+  
+  
+  async onSubmit(formData){
+    console.log('onSubmit called!');
+    console.log("[formData]",formData);
 
-    // NOTE: only for loading pages not part of this set of pages
-    // if i use this it will reset the state
-    // location.replace(`${location.origin}/${SUCCESS_PATH}`);
-  }// if
-}// responseGoogle
-
-async responseFacebook(res){
-  console.log('responseFacebook', res);
-
-  // await this.props.oauthFacebook(res.accessToken);
-  await this.passportStore.oauthFacebook(res.accessToken);
-
+    return;
+    
+    // We need to call some action
+    // await this.props.signIn(formData)// runs the signIn action
+    await this.passportStore.signIn(formData);
+    
     if(!this.passportStore.state.errorMessage){
-      console.log("headed to the dashboard");
       //dashboard redirect
+      console.log("headed to the dashboard");
       // this.props.history.push(DASHBOARD_PATH);
       // this.props.history.push(CORE_PATH);
       location.replace(`${location.origin}/${SUCCESS_PATH}`);
     }// if
-}// responseFacebook
+  }// onSubmit
+
+  async responseGoogle(res){
+    console.log('responseGoogle', res);
+
+    // await this.props.oauthGoogle(res.accessToken);
+    // NOTE: localStorage see passportStore
+    await this.passportStore.oauthGoogle(res.accessToken);
+    
+    if(!this.passportStore.state.errorMessage){
+      //dashboard redirect
+      console.log("headed to the chat");// not the dashboard
+      // this.props.history.push(`${SUCCESS_PATH}`);// didn't reset validation variables - i need replace
+      // this.props.history.push(CORE_PATH);
+      location.replace(`${location.origin}${SUCCESS_PATH}`);// path already has leading slash
+
+      // NOTE: only for loading pages not part of this set of pages
+      // if i use this it will reset the state
+      // location.replace(`${location.origin}/${SUCCESS_PATH}`);
+    }// if
+  }// responseGoogle
+
+  async responseFacebook(res){
+    console.log('responseFacebook', res);
+
+    // await this.props.oauthFacebook(res.accessToken);
+    await this.passportStore.oauthFacebook(res.accessToken);
+
+      if(!this.passportStore.state.errorMessage){
+        console.log("headed to the dashboard");
+        //dashboard redirect
+        // this.props.history.push(DASHBOARD_PATH);
+        // this.props.history.push(CORE_PATH);
+        location.replace(`${location.origin}${SUCCESS_PATH}`);// path already has leading slash
+      }// if
+  }// responseFacebook
 
   render(){
     const { handleSubmit } = this.form_data;

@@ -1,0 +1,12 @@
+$mp: !important;
+
+.dash_bg{
+  width: 100%;
+  height: 125px;
+  // background: url(https://images.pexels.com/photos/5213836/pexels-photo-5213836.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500) center no-repeat;
+  background-size: cover $mp;
+  // filter: hue-rotate(-200deg);/// generated with js
+  // top:-50px;
+  z-index: -1;
+  position:absolute;
+}

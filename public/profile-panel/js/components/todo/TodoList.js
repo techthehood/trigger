@@ -1,5 +1,5 @@
   // console.log("[TodoList]");
-  import React, { Component } from "react";
+  import /*React,*/ { Component } from "react";
   import { observer } from "mobx-react";
 
   import Mobx from "mobx";

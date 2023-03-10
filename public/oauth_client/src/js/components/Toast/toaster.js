@@ -2,7 +2,7 @@
 
   // console.log(`toast running!`);
   // const {toaster} = require('../elements/Toast/toaster.js');
-  import React from 'react';
+  // import React from 'react';
   import ReactDOM from 'react-dom';
 
   import  Toast from './Toast';

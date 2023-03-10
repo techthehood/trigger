@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import /*React,*/ { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import { CHAT_PATH, HOME_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths';
@@ -15,7 +15,8 @@ const Auth = (props) => {
     if (!passportStore.state.errorMessage) {
       console.log("headed home");
       //dashboard redirect
-      props.history.push(HOME_PATH);
+      // props.history.push(HOME_PATH);
+      location.replace(`${location.origin}${HOME_PATH}`);// path already has leading slash
       //[wrapped in withRouter to get this history. push to work](https://stackoverflow.com/questions/44009618/uncaught-typeerror-cannot-read-property-push-of-undefined-react-router-dom)
     }// if
 

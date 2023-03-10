@@ -94,7 +94,7 @@
         */
 
         try {
-          console.log('[ActionCreator] signUp called!');
+          console.log('[ActionCreator] signUp called!', data);
           // const res = await axios.post('http://localhost:3000/api/auth/signup', data);
           /**
            * @function res
@@ -207,6 +207,8 @@
     @action signOut = async () => {
           try {
               localStorage.removeItem('JWT_TOKEN');
+
+              console.log(`[signOut] removing JWT_TOKEN`,localStorage.getItem("JWT_TOKEN"));
               axios.defaults.headers.common['Authorization'] = '';
 
               // dispatch({
@@ -222,7 +224,9 @@
             //   type: AUTH_ERRORS,
             //   payload: 'there was an issue signing out'
             // });
-            this.setState({ ...this.state, errorMessage: 'there was an issue signing out'});
+            let e_msg = 'there was an issue signing out';
+            console.error(e_msg)
+            this.setState({ ...this.state, errorMessage: e_msg});
             return;
           }// catch
     }// signOut

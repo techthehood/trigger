@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import /*React,*/ {useEffect} from 'react';
 import Header from "./Header";
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';

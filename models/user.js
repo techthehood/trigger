@@ -24,6 +24,12 @@ const bcrypt = require('bcryptjs');
 
 // version 3 for oauth and local
 const userSchema = new Schema({
+  username:{
+    type: String
+  },
+  image: {
+    type: String,
+  },
   method: {
     type: String,
     enum: ['local','google','facebook'],
@@ -39,9 +45,7 @@ const userSchema = new Schema({
     },
     image: {
       type: String,
-    },
-    image_id: { type: Schema.Types.ObjectId },
-    email_id: { type: Schema.Types.ObjectId }
+    }
   },
   google: {
     id:{
@@ -53,9 +57,7 @@ const userSchema = new Schema({
     },
     image: {
       type: String,
-    },
-    image_id: { type: Schema.Types.ObjectId },
-    email_id: { type: Schema.Types.ObjectId }
+    }
   },
   facebook: {
     id:{
@@ -67,13 +69,27 @@ const userSchema = new Schema({
     },
     image: {
       type: String,
-    },
-    image_id: { type: Schema.Types.ObjectId },
-    email_id: { type: Schema.Types.ObjectId }
+    }
   },
   clients:{
     type: Array,
     default: []
+  },
+  roles: {
+    type: Array,
+    default: ["sponsor"]
+  },
+  mobile: {type: Number},
+  links: {
+    type: Schema.Types.Mixed,
+    ids:{
+      type: Array,
+      default: []
+    },
+    data:{
+      type: Schema.Types.Mixed,
+      default: {}
+    }
   }
 });
 

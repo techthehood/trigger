@@ -1,0 +1,44 @@
+$mp: !important;
+
+.lookout_wrapper{
+  display: grid;
+  grid-template-areas: "icon title info call" "icon path . .";
+  // width: 100%;
+  // border: 1px solid #9a9783;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr 1fr;
+  margin: .25rem;
+  padding: 0.5rem .5rem 1rem;
+  height: 4.5rem;
+  position: relative;
+  gap: .25em;
+  .lookout_title{grid-area: title; margin: unset; align-self: center; text-shadow: 2px 2px 2px #ccc; padding-left: .25rem; text-shadow: 2px 2px 2px #ccc;}
+  .lookout_path{grid-area: path; margin: unset; color: #ccc; font-size: .9em; padding-left: .25rem;}
+  .lookout_type{
+    position: absolute; 
+    bottom: .7rem;// bottom: 0.5rem; 
+    left: 2.6rem;// right: 0.5rem; 
+    color: #9a9783;/*grid-area: icon;*/
+  }
+  .lookout_profile{
+    justify-self: center;
+    align-self: center;
+    grid-area: icon;
+    &.image_area, &.canvas_area {
+      height: 2.5em $mp;
+      width: 2.5em $mp;
+      border: unset;
+      img, canvas{ width: 100%; height: 100%;}
+      border-radius: 50%;
+      border: 2px solid #9a9783;
+      overflow: hidden;
+      position: relative;
+    }// image_area
+  }// lookout_profile
+  .lookout_call, .lookout_info{
+    justify-self: center;
+    align-self: center;
+  }// lookout_call
+  .lookout_call{grid-area: call; font-size: 2em;}
+  .lookout_info{grid-area: info;}
+}//lookout_wrapper

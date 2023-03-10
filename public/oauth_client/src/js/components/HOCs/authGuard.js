@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import /*React,*/ { Component, useEffect } from 'react';
 // import { connect } from 'react-redux';
 import { HOME_PATH, CHAT_PATH } from '../../paths/';
 import { observer, inject } from "mobx-react";

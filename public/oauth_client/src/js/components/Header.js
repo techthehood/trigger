@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import /*React,*/ {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 // import { connect } from 'react-redux';
 import { observer, inject } from "mobx-react";
 
 // import * as actions from '../actions/';
-import { CHAT_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
+import { CHAT_PATH, HOME_PATH, SIGN_UP_PATH, SIGN_IN_PATH, DASHBOARD_PATH } from '../paths/';
 // [Bootstrap navbar](https://getbootstrap.com/docs/4.0/components/navbar/)   
 
 // export default class Header extends Component {
@@ -19,12 +19,13 @@ class Header extends Component {
 
   async signOut(){
     console.log('signOut got called!');
-    await this.props.signOut();
+    await this.passportStore.signOut();
 
     if(!this.passportStore.state.errorMessage){
       console.log("headed home");
       //dashboard redirect
-      this.props.history.push(CHAT_PATH);
+      // this.props.history.push(CHAT_PATH);// the only prop header has is store
+      location.replace(`${location.origin}${HOME_PATH}`);
 
       //[wrapped in withRouter to get this history. push to work](https://stackoverflow.com/questions/44009618/uncaught-typeerror-cannot-read-property-push-of-undefined-react-router-dom)
     }// if

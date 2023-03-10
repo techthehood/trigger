@@ -1,0 +1,41 @@
+{
+ "//": "Some browsers will use this to enable push notifications.",
+  "//": "It is the same for all projects, this is not your project's sender ID",
+  "gcm_sender_id": "103953800507",
+  "//": "I changed this location and added firebase manifest to one for A2HS",
+  "short_name": "trigger app",
+  "name": "triggered",
+  "icons": [
+    {
+      "src": "../images/flame@xs.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "../images/flame.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "../images/flame@2x.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "../images/flame_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "../images/flame_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "https://trigger.sunzao.us/",
+  "scope": "https://trigger.sunzao.us/",
+  "background_color":"#323436",
+  "theme_color":"#323436"
+}

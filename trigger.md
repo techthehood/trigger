@@ -1,4 +1,21 @@
-# to run
+# TRIGGER notes
+
+IMPORTANT: 3 things have to be running
+server.js
+io_server.js
+mongodb
+
+GOTCHA: if using a shared mongodb db make sure triggerCnx has
+
+#### trigger alias'
+```
+  alias trigger='cd-node; cd trigger'
+  alias trigger-c='trigger; cd public/oauth_client/src/'
+  alias trigger-s='trigger; nodemon src/server.js -e .hbs,.js,.scss'
+  alias trigger-io='trigger; nodemon src/io_server.js -e .hbs,.js,.scss'
+```
+
+#### to run
 ```
   // install all the dependencies
   npm install
@@ -14,7 +31,14 @@ use -e or --ext to track extensions
   nodemon path-to/server.js -e hbs,js,css
 ```
 
-# installing passport
+#### running the socket.io server
+
+```
+  nodemon src/io_server.js
+```
+up on port 3002
+
+### installing passport
 > There are 3 separate npm modules. 
 > run npm install in 3 folders
 

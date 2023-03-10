@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, forwardRef } from 'react';
+import /*React,*/ { useRef, useEffect, useState, forwardRef } from 'react';
 const {class_maker} = require('../../tools/class_maker');
 require('./Loader.scss');
 

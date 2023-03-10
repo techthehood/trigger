@@ -60,7 +60,7 @@ const test_date = async function (req, res) {
   } catch (e) {
     let err_msg = "[test_date] an error occured";
     console.error(chalk.red(err_msg), e);
-    res.json({
+    res.status(500).json({
       message: err_msg,
       error: e
     });

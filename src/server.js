@@ -14,18 +14,30 @@ const passport = require('passport');
 // DOCS: passport db prep
 const passportConfig = require('./oauth_server/passport');// OAUTH 
 const Keys = require('../configuration/keys').mongodb;
-const { HOSTNAME, DOMAIN_NAME } = require('../configuration/keys');
+const { HOSTNAME, DOMAIN_NAME, SERVER_PORT, LOCAL_PORT } = require('../configuration/keys');
 const corsOptions = require('./utils/cors-options.js');
 const process_memory = require('./utils/process_memory.js');
 const display_console = false;
 
 let dbConnect = (os.hostname().includes(HOSTNAME)) ? Keys.liveDB : Keys.db;// what is this in production?
+
+// IMPORTANT - never use in production
+// reveals db login info
+if(display_console || 1) console.log(`[mongoose]`,dbConnect);
+// IMPORTANT - never use in production
+
+
 mongoose.connect(dbConnect, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-const PORT = 8080;
+console.log(`[server.js] SERVER_PORT`,SERVER_PORT);
+console.log(`[server.js] HOSTNAME`, HOSTNAME);
+
+let PORT = (os.hostname().includes(HOSTNAME)) ? SERVER_PORT : LOCAL_PORT;
+console.log(`[server.js] PORT`, PORT);
+
 
 //routers
 // const webpushRouter = require("./routers/web-push");
@@ -35,6 +47,7 @@ const pagesRouter = require("./routers/pages");
 const oauthClientRouter = require('../public/oauth_client/routers/trigger');
 const oauthServerRouter = require('./oauth_server/routers/oauth');
 const triggerAPIRouter = require('../public/oauth_client/routers/api');
+const { log } = require('console');
 
 // console.log('forecast = ',forecast);
 

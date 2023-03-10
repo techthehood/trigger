@@ -1,0 +1,16 @@
+
+$mp: !important;
+
+
+#pp_sidebar.active { z-index: 1001 $mp;}// parent .header
+.ui-header-fixed, .ui-footer-fixed { z-index: 1000 $mp;}
+
+
+#pp_sidebar {z-index: 999 $mp;}// parent .header
+.pp_overlay {z-index: 998 $mp;}
+
+.toaster_home{z-index: 15 $mp;}
+.filter_wrapper{z-index: 10 $mp;}
+.qrc_view_modal_cont, .pTree_view_modal_cont { z-index: 10 $mp;}
+
+// .header.visible{z-index: 4;}// inline style.js

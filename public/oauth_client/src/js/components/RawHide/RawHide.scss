@@ -1,0 +1,24 @@
+
+
+.rawDrop_wrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  .rawDrop_header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .rawDrop_dropdown_icon{}
+  }// rawDrop_header
+
+  .rawDrop_display_cont{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+    &.stretch{ max-height: 40rem; }/*needs a max-height value for the animation to work*/
+    &.squish{ max-height:0rem; }/*I tried to use height instead of max-height - its container's height wouldn't return to squished height*/
+  }// rawDrop_display_cont
+  hr{margin: .5rem 2rem;}
+}// .rawDrop_wrapper

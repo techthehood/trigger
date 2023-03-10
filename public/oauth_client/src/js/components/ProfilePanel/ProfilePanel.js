@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import /*React,*/ { useEffect, useRef, useState } from "react";
 import Panel from './Panel';
 require('./custom.scss');
 
@@ -19,6 +19,7 @@ const ProfilePanel = (props) => {
     wrapper = false,
     left = false,
     sign_out = false,
+    exit_text,
     children
   } = props;
 
@@ -28,10 +29,16 @@ const ProfilePanel = (props) => {
   // const sidebar_id = `pp_sidebar${uuid}`;
 
   const panel_btn = (
-    <div className={`pp_panelCtrl${uuid} ${name} ${project} ${pos} pp_panelCtrl pp_panelBtn pp_btn icon-${icon}`}
+    <div className={`pp_panelCtrl${uuid} ${name} ${project} ${pos} pp_panelCtrl pp_panelBtn pp_btn svg-icon-${icon}`}
       title="profile panel controls"
       onClick={() => {
         // document.querySelector(`#${sidebar_id}`).classList.toggle("active");
+        let all_panels = document.querySelectorAll(".pp_sidebar");
+        // close all other panels
+        all_panels.forEach((panel) => {
+          panel.classList.remove("active");
+        });
+        // open this panel
         sidebar.current.classList.toggle("active");
       }}
     >

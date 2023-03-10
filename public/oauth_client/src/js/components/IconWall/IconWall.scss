@@ -1,0 +1,74 @@
+$mp: !important;
+
+// .icon_wall_cont.data_type{
+// }//icon_wall_cont.data_type
+
+.iWall_modal, .flavor_ctrls_iWall_modal{
+  margin: 0 auto 30px $mp;
+  .iWall_content, .flavor_iWall_content {border: unset $mp;}
+  .iWall_content{max-height: 75vh;}
+}/*iWall_modal*/
+
+  .iconWall_wrapper{
+    // height: 30rem;
+    .iconwall_title{ text-shadow: 2px 2px 2px #ccc; font-size: 1.2rem; margin-bottom: .5rem;}
+    .iconWall_cont{
+      // display: flex;
+      // flex-flow: row wrap;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-gap: .25rem;
+      &.double{display: flex; justify-content: space-around; div{flex:1 50%;}}
+      &.single{display: flex; justify-content: center;}
+      label{width: 100%; text-align: center;}
+      .iconWall_btn{
+        border: 1px solid #ccc;
+        text-align: center;
+        color: #9a9783;
+        // width: 5rem;
+        height: 9rem;
+        line-height: 130px;
+        font-size: 5rem;
+        cursor: pointer;
+        &.active{
+          background-color: #2d2dad;
+          color:white;
+        }
+      }// iconWall_btn
+    }// iconWall_cont
+  }/*iconWall_wrapper*/
+// https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+
+.iconWall_wrapper.inline{
+  .iconWall_cont{
+    // display: flex;
+    // flex-flow: row wrap;
+    display: flex;
+    grid-gap: .25rem;
+    padding: 0 .5rem;
+    .iconWall_btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: .25rem;
+      // border: unset;
+      text-align: center;
+      color: #9a9783;
+      // width: 5rem;
+      height: 1.7rem;
+      line-height: 1.7rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      &.active{
+        background-color: #2d2dad;
+        color: white;
+        // background-color: unset;
+        // color: #2d2dad;
+      }
+    }// iconWall_btn
+  }// iconWall_cont
+}// iconWall_wrapper
+
+.iWall_content.inline{
+
+}

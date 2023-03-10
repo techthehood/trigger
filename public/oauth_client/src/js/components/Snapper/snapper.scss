@@ -1,0 +1,220 @@
+
+  $mp: !important;
+
+  html{
+    // control the pull to navigate browser overscroll behavior
+    // overscroll-behavior-x: contain;
+    overscroll-behavior: contain;
+  }
+
+  .snapBox{
+
+    &.orientation_ctrls{
+      display:grid $mp;
+      grid-template-areas: "left center right" "bottom bottom bottom";
+      grid-template-columns: auto 9fr auto;
+      grid-template-rows: 9fr auto;
+      .snap_cont{grid-area:center;}
+      .snap_ctrls{
+        border-radius: 10px;
+        background: #e9ecef;
+        padding: 5px;
+        width: 40px;
+
+        grid-template-areas:
+        "left"
+        "main"
+        "right" $mp;
+        grid-template-rows: auto 9fr auto;
+        .snap_ctrls_left, .snap_ctrls_right{}
+        .snap_ctrls_left{
+          // *:last-child{margin-bottom: .9rem;}/*why does this need padding and not main*/
+          align-items: flex-start $mp;
+          .user_menu{/*margin-top: .2rem;*/}
+        }// snap_ctrls_left
+        .snap_ctrls_main{
+          flex-flow: column; gap: 1rem; width: unset $mp; margin: unset $mp;
+          .snap_profile{margin: 0 0.5rem !important;}
+        }// snap_ctrls_main
+        .snap_ctrls_right{flex-flow: column nowrap;}
+        div.snap_btn{margin: unset $mp;}
+      }// snap_ctrls
+      &.left{
+        .snap_ctrls{grid-area:left;}
+      }// .left
+      &.right{
+        .snap_ctrls{grid-area:right;}
+      }// .right
+      &.left, &.right{
+        .snap_ctrls{height: 100%;}
+        .snap_ctrls_main{margin: 1rem 0 $mp;}
+      }
+    }// orientation_ctrls
+
+    .snap_ctrls{
+      display:flex;
+      justify-content: space-around;
+      min-height:0;
+      .snap_btn{
+        // margin: 2px 3px !important;
+        // flex: 1 !important;
+        // padding: 0px !important;
+        &.dots{
+          border-radius: 50% $mp;
+          width: 1.5rem $mp;
+          height: 1.5rem $mp;
+          flex: unset $mp;
+          // &:hover{transform:unset;}
+          &.active{background-color: var(--active-blue)/*#2d2dad*/ /*blue*/ $mp;}
+        }
+        border-radius: 0px;
+        height: 1.75em;
+        line-height: 1.5;
+        &:hover{
+          transform: scale(1.2);
+        }
+        &.active{
+          color:white $mp;
+          transform: unset;
+        }
+      }/**/
+      .snap_profile{
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        .image_area {
+          height: 100%;
+          width: 100%;
+        }// image_area
+        .snap_profile_icon{font-size: 1.6rem $mp;}
+        .d3-profile-rounded {border-width: 2px $mp;}
+        img, canvas{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }// img, canvas
+      }// snap_profile
+    }/*snap_ctrls*/
+    .snap_cont{
+      width:100%;
+      min-height: 20rem;
+      border:1px solid #ddd;
+      -ms-overflow-style: none;/* Hide scrollbar for IE and Edge */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &.scroll{
+        display: flex;
+        flex-flow: row nowrap;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
+        overflow-y: hidden;// fix for invisible double scroll bars
+      }
+      .snap_section{
+        /*width: 100%;*/
+        height:100%;
+        // border:1px solid red;
+        // margin: 0 1rem;/*a wider margin makes scroll-snap-align: center line up correctly*/
+        scroll-snap-align: center;
+        overflow-y: auto;
+        scroll-snap-stop: always;
+        &.scroll{
+          flex: 1 0 100%;
+        }
+        &.tabs{
+          display: none;
+          &.show{
+            display:block;
+          }
+          width: auto;
+          // &:first-child {
+          //   display: block;
+          // }
+          // &:nth-child(n+2) {
+          //   display:none;
+          // }
+        }/*.tabs*/
+      }/*snap_section*/
+    }/*snap_cont*/
+  }/*snapBox*/
+
+  .snap_profile{
+    height: 35px $mp;
+    width: 35px;
+    flex: 0 0 2.2rem;
+    cursor: pointer;
+    margin: 5px $mp;
+    .image_area {
+      height: 100%;
+      width: 100%;
+    }// image_area
+    .snap_profile_icon{font-size: 1.6rem $mp;}
+    .d3-profile-rounded {border-width: 2px $mp;}
+    img, canvas{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }// img, canvas
+  }// snap_profile
+
+  .snap_dyn_ctrls{font-size: 1.5rem;}
+
+  .snapBox.snap_core, .arc_footer{
+    .snap_ctrls{
+      display: grid;
+      grid-template-areas: "left main right";
+      grid-template-columns: 1fr 5fr 1fr;
+      margin: 0 .5rem;
+      min-height:0;
+      
+      .snap_ctrls_main{
+        display: flex;
+        grid-area: main;
+        align-items: center;
+        overflow: auto;
+        width: 15.3rem;// wide enough for 5 1/2 icons
+        margin: 0 auto;
+        &.left{justify-content: flex-start;}
+        &.center{justify-content: center;}
+      }
+      .snap_ctrls_left{
+        grid-area: left;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .snap_ctrls_right{
+        grid-area: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .snap_btn{
+        // why is this unsetting things?
+        border: unset;// why is this unset?
+        font-size: 1.5rem;
+        background-color: unset;// why is this unset?
+        margin: 0 .5rem $mp;
+        height: unset;
+        line-height: normal $mp;
+        color: #545454;
+        // grid-area: middle;
+        &.active{
+          color: #2d2dad $mp;// #1512b6
+        }
+      }//snap_btn
+    }//snap_ctrls
+  }//snapBox
+
+
+.charcoal{
+  &.snap_core_snap_ctrls {
+    justify-content: center;
+    background-color: #676363;
+    border-radius: 7px 7px 25px 25px;
+    .snap_btn{
+      color: #fff;
+    }// snap_btn
+  }// snap_core_snap_ctrls
+}// charcoal

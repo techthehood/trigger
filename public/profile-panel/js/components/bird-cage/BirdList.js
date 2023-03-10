@@ -1,5 +1,5 @@
     // console.log("[BirdList]");
-    import React, { Component, useEffect, Fragment } from "react";
+    import /*React,*/ { Component, useEffect, Fragment } from "react";
     import { observer, inject } from "mobx-react";
 
     const BirdList = inject('BirdStore')(observer(

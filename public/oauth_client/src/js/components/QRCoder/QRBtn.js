@@ -1,22 +1,21 @@
-import React, { useContext } from 'react'
+import /*React,*/ { useContext } from 'react'
 import ReactDOM from 'react-dom';
 import { observer, inject } from "mobx-react";
-const QRCode = require('qrcode.react');
 
 const { wrapr } = require('../../tools/wrapr');
 import Modal from '../Modal';
 import QRC from './QRC';
 require('./QRCoder.scss');
-import { TriggerContext } from '../../triggerContext';
 
-const QRCoder = observer(({
-  icon,
+const QRBtn = observer(({
+  icon,// = `svg-icon-${icon}`,
   name = "",
   project = "",
-  uuid = ""
+  uuid = "",
+  autorun = true,
+  data,
 }) => {
   
-  const TriggerStore = useContext(TriggerContext);
   // const upload_form = (e, obj) => {
 
   //   // close the modal
@@ -34,13 +33,10 @@ const QRCoder = observer(({
 
   const start_modal = (params) => {
 
-    // let hidden_cont = document.querySelector(".modal_home");
-    // let stk_vw_cont = document.createElement('div');
-    // stk_vw_cont.id = `stk_vw_cont${iUN}`;
-    // stk_vw_cont.className = `stk_vw_cont${iUN} stk_vw_cont w3-part block`;
-    // hidden_cont.appendChild(stk_vw_cont);
-
     let qrc_modal_cont = wrapr({ name: "qrc_modal_cont", home: ".modal_home", custom: "w3-part block" });
+
+    let item = triggerStore.sponsor;
+    item.id = item.sponsor_id;
 
     let modal_data = {
       name: "qrc_view",
@@ -53,7 +49,7 @@ const QRCoder = observer(({
       // addClass: "some-class"
       // },
       modal: {
-        addClass: "ComponentName"
+        addClass: "QRCBtn"
       },
       content: {
         addClass: "hide-scroll"
@@ -64,30 +60,43 @@ const QRCoder = observer(({
       // },
       close: {
         show: true,
-        addClass:"pp_btn icon-cross",
+        //addClass:"pp_btn svg-icon-cross",
         // hide: modal_close_hide,// deprecated
         // hide: true,// it will probably never be hide
         callback: close_panel
       }
     }// modal_data
 
-    let qrc_view_el = (
-      <Modal data={modal_data} >
-        <QRC />
-      </Modal>
-    );
+    // i can also send an autorun prop and a callback which would allow me to run a request, get url data and send back 
+    // the data by calling props.setQURL 
+    // data[mode].callback({ setQURL });
+    // const q_data = { 
+    //   default: { 
+    //     title, 
+    //     description, 
+    //     // btn_title,
+    //     qURL: url,
+    //     autorun,
+    //   } 
+    // };
 
     ReactDOM.render(
-      qrc_view_el,
+      <Modal data={modal_data} >
+        <QRC {...{ data, autorun }} />
+      </Modal>,
       qrc_modal_cont
     );
   }// start_modal
 
   return (
-    <div className={`QRCodeCtrl${uuid} pp_panelCtrl${uuid} pp_panelCtrl ${name} ${project} QRCodeCtrl pp_panelBtn pp_btn icon-${icon}`}
-      onClick={start_modal}
+    <div className={`QRCodeCtrl${uuid} pp_panelCtrl${uuid} pp_panelCtrl ${name} ${project} QRCodeCtrl pp_panelBtn ${icon}`}
+      onClick={(e) => {
+        e.preventDefault();
+        start_modal(e);
+        e.stopPropagation();
+      }}
     ></div>
   )
 });
 
-export default QRCoder;
+export default QRBtn;

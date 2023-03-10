@@ -1,0 +1,42 @@
+$mp: !important;
+
+%svg_icon{
+  cursor: pointer; /*width: 3rem;*/ position: unset;
+    &:after{ content: "";
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    /* background-color: rgba(0,0,0,.3); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 1em;
+    background-size: 1.7rem;}
+}
+
+.trigr_users.pp_sidebar{
+  .pp_panel_cls_btn{ 
+    // @extend %svg_icon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }// pp_panel_cls_btn
+  padding: 0 .5rem 0 1rem;
+}// pp_sidebar
+.contacts_wrapper {
+  padding: .5rem;
+  padding-right: 1rem;
+  .filter_option_wrapr{margin: unset;}
+  .iconWall_btn, .filter_input_btns, .pp_panel_cls_btn {
+    /*@extend %svg_icon;*/
+    height: 2rem $mp;
+  }// iconWall_btn
+  .filter_iWall_content{padding: .5em 0;}
+  .filter_cont{
+    padding: .25em 0;
+    input{flex: 1; border: unset;}
+    .filter_options{ display: none;}
+  }
+  .loader_wrapper {margin-top: 2rem;}
+  .bounce-loader > div{background-color: #9a9783;}
+  .contacts_label{color: #9a9783;}
+}// contacts_wrapper

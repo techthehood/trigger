@@ -4,7 +4,16 @@
 @import './ping';
 @import './fade';
 @import './slide';
+@import './zLevels';
 $mp: !important;
+
+html {
+    overscroll-behavior: contain;
+}
+body{
+  height: 100vh;
+  // overscroll-behavior: contain;
+}
 
 %active{background-color: var(--active-blue) $mp; color: white $mp;}
 %active2{border: 2px solid var(--active-blue) $mp;}
@@ -12,6 +21,123 @@ $mp: !important;
   border: 2px solid var(--active-blue) $mp;
   box-shadow: 0px 0px 10px 1px var(--active-blue);
 }
+
+/***************** test rules **********************/
+.test_yellow {
+  border: 1px solid yellow !important; }
+
+.test_red {
+  border: 1px solid red !important; }
+
+.test_blue {
+  border: 1px solid blue !important; }
+
+.test_green {
+  border: 1px solid green !important; }
+
+.test_purple {
+  border: 1px solid purple !important; }
+
+.test_orange {
+  border: 1px solid orange !important; }
+
+.test_brown {
+  border: 1px solid brown !important; }
+
+.test_pink {
+  border: 1px solid pink !important; }
+
+/***************** test rules **********************/
+.clamp-1, .clamp-2, .clamp-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box !important;
+  display: block !important;
+  line-height: 1.5; }
+
+.clamp-0 {
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.clamp-1 {
+  -webkit-line-clamp: 1; }
+
+.clamp-2 {
+  -webkit-line-clamp: 2; }
+
+.clamp-3 {
+  -webkit-line-clamp: 3; }
+
+.word_wrap {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
+
+/* styles for '...' */
+.block-with-text {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative;
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em;
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1.2em; }
+
+/* create the ... */
+.block-with-text:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0; }
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white; }
+
+.bwt1 {
+  max-height: 1.2em; }
+
+.bwt2 {
+  max-height: 2.4em; }
+
+.bwt3 {
+  max-height: 3.6em; }
+
+.chk_hidden_cont .fishBowl {
+  max-width: 30rem !important; }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scroll::-webkit-scrollbar, .hide_scroll::-webkit-scrollbar {

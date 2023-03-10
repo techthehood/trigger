@@ -27,14 +27,38 @@ module.exports = {
     minimize: false
   },//this doesn't seem to be doing anything anymore
   */
-  /*externals: {
-    jquery: 'jQuery'
-
-  },//used to maintain access to CDN global variables
-  */
-  // optimization:{
-  //   splitChunks:{chunks:'all'}
-  // },
+  externals: {
+    /* @ comment out externals for/to create DynamicCdnWebpackPlugin scripts in ./dist/index.html file */
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    // 'mobx': 'mobx',
+    'axios': 'axios',
+    // 'faker':'faker',// fails - faker doesn't need an external or an import in the component
+    // 'tinycolor': 'tinycolor',
+    // 'validator': 'validator',
+    // 'linkify': 'linkify',
+    // 'color':'Color',
+    // 'draft-js':'draft-js',
+    /*'react-hook-form':'react-hook-form'/*'ReactHookForm'*/
+    // jquery: 'jQuery'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      }
+    }
+  },
   output: {
       chunkFilename: '[name].chunk.js',
       path: path.resolve(__dirname,'js','dist'),
@@ -46,7 +70,7 @@ module.exports = {
     ignored: ['files/**/*.js', 'node_modules/**']
   },
   plugins:[
-    /*new BundleAnalyzerPlugin(),*/
+    new BundleAnalyzerPlugin(),
     new webpack.ProvidePlugin({
       /*$ : "jquery",
       jQuery : "jquery",*/
@@ -76,17 +100,17 @@ module.exports = {
         }
       },
       {
-          test: /\.(s*)?[ac]ss$/,
-          use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader',
-                options: { url: false, sourceMap: true } },
-              {
-                loader: 'sass-loader',
-                options: { sourceMap: true }
-              }
-          ],
+        test: /\.(s*)?[ac]ss$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: { url: false, sourceMap: true } },
+            {
+              loader: 'sass-loader',
+              options: { sourceMap: true }
+            }
+        ],
       }
     ]
   }

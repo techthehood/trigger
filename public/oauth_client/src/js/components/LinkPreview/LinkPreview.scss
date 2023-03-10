@@ -1,0 +1,14 @@
+$mp: !important;
+
+.info_booth{
+  padding-top: 2rem;
+  .previewBox{
+    padding: 1rem;
+    position: relative;
+    .rich_refresh_btn{
+      position: absolute;
+      top: -1.5rem;
+      right: 0;
+    }// rich_refresh_btn
+  }// previewBox 
+}// info_booth

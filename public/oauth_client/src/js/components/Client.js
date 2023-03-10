@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import /*React,*/ { Fragment, useEffect, useState, useRef } from 'react';
 import { Link, withRouter, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -98,8 +98,8 @@ const Client = (props) => {
     <Fragment>
       <div className="home_auth_cont client_cnx_cont">
         {status == "pending" ? <Loader name={"client_cnx"} type={"dots"} /> : null}
-        {status == "success" ? <div className="check-mark icon-check-mark icon_btn client_result_logo heartbeat"></div> : null}
-        {status == "failure" ? <div className="nope-mark icon-nope-mark icon_btn client_result_logo ping"></div> : null}
+        {status == "success" ? <div className="check-mark svg-icon-check-mark icon_btn client_result_logo heartbeat"></div> : null}
+        {status == "failure" ? <div className="nope-mark svg-icon-nope-mark icon_btn client_result_logo ping"></div> : null}
       </div>
     </Fragment>
   )
